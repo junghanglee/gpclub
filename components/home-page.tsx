@@ -11,85 +11,70 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <SiteShell locale={locale}>
-      <section className="relative overflow-hidden border-b border-black/5 bg-[#f8f6f1]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.035),transparent_22%),radial-gradient(circle_at_80%_10%,rgba(0,0,0,0.03),transparent_18%),linear-gradient(to_bottom,#f8f6f1,#f4f1ea)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-14 md:grid-cols-[0.98fr_1.02fr] md:items-center md:pb-28 md:pt-20">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.26em] text-[#5e5e5e]">
-              <span className="h-2 w-2 rounded-full bg-black" />
-              {t.heroEyebrow}
-            </div>
-
-            <h1 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-[#111] md:text-7xl">
-              {t.heroTitle}
-            </h1>
-            <p className="mt-7 max-w-xl text-base leading-8 text-[#5f5f5f] md:text-lg">
-              {t.heroDesc}
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={`/${locale}/products`} className="rounded-full bg-[#111] px-7 py-3.5 text-sm font-medium text-white transition hover:-translate-y-0.5">
-                {t.primaryCta}
-              </Link>
-              <Link href={`/${locale}/brand`} className="rounded-full border border-black/10 bg-white px-7 py-3.5 text-sm font-medium text-[#111] transition hover:-translate-y-0.5">
-                {t.secondaryCta}
-              </Link>
-            </div>
-
-            <div className="mt-12 grid max-w-2xl gap-4 md:grid-cols-3">
-              {[
-                { label: 'B2B Focus', value: 'Vietnam + multinational buyers' },
-                { label: 'Portfolio', value: 'Korean HQ aligned product lines' },
-                { label: 'Support', value: 'AI + partnership inquiry flow' },
-              ].map((item) => (
-                <div key={item.label} className="rounded-[1.6rem] border border-black/6 bg-white px-5 py-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-[#7a7a7a]">{item.label}</p>
-                  <p className="mt-3 text-sm leading-6 text-[#1e1e1e]">{item.value}</p>
+      <section className="relative overflow-hidden border-b border-black/5 bg-[#f7f5f1]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),_rgba(247,245,241,0.88)_34%,_rgba(236,233,227,0.96)_100%)]" />
+        <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-10">
+          <div className="overflow-hidden rounded-[2.3rem] border border-black/6 bg-[linear-gradient(90deg,#efefef_0%,#f8f8f8_22%,#f2f0ed_46%,#ebe7df_100%)] shadow-[0_28px_70px_rgba(0,0,0,0.07)]">
+            <div className="grid min-h-[560px] items-center gap-10 px-8 py-10 md:grid-cols-[0.95fr_1.05fr] md:px-12 md:py-14">
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/80 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.24em] text-[#666] backdrop-blur">
+                  <span className="h-2 w-2 rounded-full bg-[#111]" />
+                  {t.heroEyebrow}
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="relative">
-            <div className="grid gap-4 md:grid-cols-[1.12fr_0.88fr]">
-              <div className="rounded-[2.2rem] border border-black/6 bg-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
-                <div className="overflow-hidden rounded-[1.8rem] bg-gradient-to-br from-[#f7f4ef] via-[#ece5d9] to-[#d4c0a6] p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <p className="text-[11px] uppercase tracking-[0.26em] text-[#7a7a7a]">Main Visual</p>
-                      <p className="mt-2 text-sm text-[#666]">JMsolution-inspired premium portfolio mood</p>
-                    </div>
-                    <div className="rounded-full bg-white/70 px-3 py-1 text-[11px] font-medium text-[#444]">Hero</div>
-                  </div>
+                <p className="mt-10 text-xl font-medium tracking-[-0.03em] text-[#181818] md:text-3xl">
+                  Vietnam-based Korean beauty portfolio
+                </p>
+                <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.05em] text-[#111] md:text-8xl">
+                  {t.heroTitle}
+                </h1>
+                <p className="mt-7 max-w-xl text-base leading-8 text-[#666] md:text-lg">
+                  {t.heroDesc}
+                </p>
 
-                  <div className="mt-8 grid grid-cols-[0.88fr_1.12fr] gap-4">
-                    <div className="rounded-[1.6rem] bg-gradient-to-b from-[#d8b48b] to-[#8b6c49] shadow-[0_20px_40px_rgba(98,73,42,0.2)]" />
-                    <div className="space-y-4">
-                      <div className="rounded-[1.5rem] bg-white/75 p-4 backdrop-blur">
-                        <p className="text-[11px] uppercase tracking-[0.24em] text-[#7a7a7a]">Core Line</p>
-                        <p className="mt-2 text-lg font-semibold text-[#131313]">Water Luminous / Ampoule / Sun Care</p>
-                      </div>
-                      <div className="rounded-[1.5rem] bg-black px-5 py-6 text-white">
-                        <p className="text-[11px] uppercase tracking-[0.24em] text-white/60">For Vietnam B2B</p>
-                        <p className="mt-3 text-sm leading-7 text-white/85">
-                          A clean, editorial brand experience designed for distribution, supply, and multinational buyer communication.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href={`/${locale}/products`} className="rounded-full bg-[#111] px-7 py-3.5 text-sm font-medium text-white transition hover:-translate-y-0.5">
+                    {t.primaryCta}
+                  </Link>
+                  <Link href={`/${locale}/brand`} className="rounded-full border border-black/10 bg-white px-7 py-3.5 text-sm font-medium text-[#111] transition hover:-translate-y-0.5">
+                    {t.secondaryCta}
+                  </Link>
+                </div>
+
+                <div className="mt-10 flex flex-wrap gap-3">
+                  {['Mask Portfolio', 'Ampoule Care', 'Sun Care', 'B2B Supply'].map((item) => (
+                    <span key={item} className="rounded-full bg-[#111] px-4 py-2 text-sm font-medium text-white">
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <div className="grid gap-4">
-                <div className="rounded-[1.8rem] border border-black/6 bg-white p-5 shadow-[0_14px_30px_rgba(0,0,0,0.04)]">
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-[#7a7a7a]">Best Seller Logic</p>
-                  <p className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[#111]">3 Core Lines</p>
-                  <p className="mt-3 text-sm leading-7 text-[#666]">Mask, luminous care, and calming / sun-care categories positioned for B2B selection.</p>
+              <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[500px]">
+                <div className="absolute right-[-2%] top-[8%] h-[78%] w-[78%] rounded-full border-[10px] border-[#d6bf94] opacity-80" />
+                <div className="absolute right-[8%] bottom-[8%] h-[62%] w-[62%] rounded-full border-[8px] border-[#eadab4] opacity-80" />
+                <div className="absolute left-[6%] top-[6%] h-8 w-8 rounded-full bg-white/70 blur-sm" />
+                <div className="absolute right-[18%] top-[18%] h-6 w-6 rounded-full bg-white/80 blur-sm" />
+                <div className="absolute bottom-[20%] left-[14%] h-5 w-5 rounded-full bg-white/70 blur-sm" />
+
+                <div className="absolute bottom-0 h-[30%] w-[88%] rounded-t-[2rem] bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.05)]" />
+
+                <div className="relative z-10 flex w-full max-w-[620px] items-end justify-center gap-4 md:gap-5">
+                  <div className="hidden h-[280px] w-[150px] rounded-[1.6rem] bg-gradient-to-b from-[#171717] to-[#0b0b0b] shadow-[0_18px_40px_rgba(0,0,0,0.22)] md:block" />
+                  <div className="hidden h-[300px] w-[150px] rounded-[1.6rem] bg-gradient-to-b from-[#1f1f1f] to-[#0b0b0b] shadow-[0_18px_40px_rgba(0,0,0,0.22)] md:block" />
+                  <div className="hidden h-[320px] w-[150px] rounded-[1.6rem] bg-gradient-to-b from-[#1b1b1b] to-[#080808] shadow-[0_18px_40px_rgba(0,0,0,0.24)] md:block" />
+
+                  <div className="absolute bottom-[8%] left-[34%] h-[150px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#f8f8f8] via-[#ececec] to-[#d9d9d9] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
+                  <div className="absolute bottom-[8%] left-[43%] h-[170px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fcfcfc] via-[#eff0f2] to-[#d8dee6] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
+                  <div className="absolute bottom-[8%] left-[52%] h-[158px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fcfcfc] via-[#eff6ef] to-[#dce9dc] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
+                  <div className="absolute bottom-[8%] left-[61%] h-[164px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fcfcfc] via-[#f4f4f4] to-[#d8d8d8] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
                 </div>
-                <div className="rounded-[1.8rem] border border-black/6 bg-[#111] p-5 text-white shadow-[0_14px_30px_rgba(0,0,0,0.12)]">
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-white/55">Consultation</p>
-                  <p className="mt-3 text-2xl font-semibold tracking-[-0.03em]">24/7 AI-ready</p>
-                  <p className="mt-3 text-sm leading-7 text-white/72">Guide product discovery, answer buyer questions, and route partnership inquiries.</p>
+
+                <div className="absolute bottom-[4%] left-[50%] z-20 flex h-[90px] w-[90px] -translate-x-1/2 items-center justify-center rounded-full border-[6px] border-[#d3b26b] bg-white shadow-[0_14px_30px_rgba(0,0,0,0.12)]">
+                  <div className="text-center">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#8b7449]">New</p>
+                    <p className="mt-1 text-sm font-semibold text-[#8b7449]">SERUM</p>
+                  </div>
                 </div>
               </div>
             </div>
