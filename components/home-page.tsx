@@ -82,6 +82,46 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+        <div className="grid gap-6 md:grid-cols-[1.12fr_0.88fr]">
+          <article className="overflow-hidden rounded-[2rem] border border-black/6 bg-[linear-gradient(120deg,#f5f4f1_0%,#ece9e3_50%,#ddd6ca_100%)] shadow-[0_16px_36px_rgba(0,0,0,0.05)]">
+            <div className="grid min-h-[280px] gap-8 px-8 py-8 md:grid-cols-[0.9fr_1.1fr] md:px-10 md:py-10">
+              <div className="flex flex-col justify-center">
+                <p className="text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Niacinamide Line</p>
+                <h3 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-4xl">Brightening care for modern B2B selection</h3>
+                <p className="mt-4 max-w-md text-sm leading-7 text-[#666]">
+                  A clean portfolio story built around toner, serum, and sun care style presentation — ideal for buyers looking for a modern Korean skincare line.
+                </p>
+                <Link href={`/${locale}/products`} className="mt-6 inline-flex w-fit rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
+                  Explore line
+                </Link>
+              </div>
+              <div className="relative flex items-end justify-center">
+                <div className="absolute bottom-0 h-[26%] w-[90%] rounded-t-[1.6rem] bg-white/80" />
+                <div className="absolute left-[8%] bottom-[8%] h-[155px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fbfbfb] via-[#ececec] to-[#d7d7d7] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
+                <div className="absolute left-[24%] bottom-[8%] h-[178px] w-[62px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#eef1f5] to-[#dbe1e8] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
+                <div className="absolute left-[42%] bottom-[8%] h-[164px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#eff4ef] to-[#dde9dd] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
+                <div className="absolute left-[60%] bottom-[8%] h-[168px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#f4f4f4] to-[#d8d8d8] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
+              </div>
+            </div>
+          </article>
+
+          <div className="grid gap-6">
+            <article className="overflow-hidden rounded-[2rem] border border-black/6 bg-[linear-gradient(135deg,#ece8de_0%,#e2d8ca_100%)] p-7 shadow-[0_16px_36px_rgba(0,0,0,0.05)]">
+              <p className="text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Bio Hydrogel Mask</p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[#111]">Hydrogel-focused signature promotion block</h3>
+              <p className="mt-4 max-w-sm text-sm leading-7 text-[#666]">A campaign-style section suitable for hero follow-up, best item promotion, or signature line storytelling.</p>
+            </article>
+
+            <article className="overflow-hidden rounded-[2rem] border border-black/6 bg-[linear-gradient(135deg,#eef5f8_0%,#dae8ef_100%)] p-7 shadow-[0_16px_36px_rgba(0,0,0,0.05)]">
+              <p className="text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Sun Care Promotion</p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[#111]">Seasonal visual block for UV and outdoor care</h3>
+              <p className="mt-4 max-w-sm text-sm leading-7 text-[#666]">A clean seasonal panel that can later take real JMsolution-style campaign visuals for sun care or brightening launches.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="mb-8 flex items-end justify-between gap-6">
           <div>
