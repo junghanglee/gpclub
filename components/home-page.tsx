@@ -71,9 +71,6 @@ export function HomePage({ locale }: { locale: Locale }) {
               </div>
 
               <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[500px]">
-              </div>
-
-              <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[500px]">
                 <div className="absolute right-[-2%] top-[8%] h-[78%] w-[78%] rounded-full border-[10px] border-[#d6bf94] opacity-80" />
                 <div className="absolute right-[8%] bottom-[8%] h-[62%] w-[62%] rounded-full border-[8px] border-[#eadab4] opacity-80" />
                 <div className="absolute left-[6%] top-[6%] h-8 w-8 rounded-full bg-white/70 blur-sm" />
