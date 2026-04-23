@@ -19,6 +19,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         subtitle: '다크모공 클리어, 다운타임 없는 즉각 솔루션',
         desc: t.heroDesc,
         tone: 'from-[#eee6db] via-[#f6f1ea] to-[#e2d2bf]',
+        image: '/images/samples/hero-pore-serum.svg',
       },
       {
         label: 'Signature Mask',
@@ -26,6 +27,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         subtitle: '프리미엄 마스크 포트폴리오를 위한 시그니처 라인',
         desc: t.brandDesc,
         tone: 'from-[#ece7de] via-[#f6f2eb] to-[#ded2c4]',
+        image: '/images/samples/hero-hydrogel-mask.svg',
       },
       {
         label: 'Seasonal Care',
@@ -33,6 +35,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         subtitle: '베트남 리테일과 시즌 전개에 적합한 UV 케어',
         desc: t.partnerDesc,
         tone: 'from-[#e6eef2] via-[#f6fbfd] to-[#d9e8ee]',
+        image: '/images/samples/hero-sun-care.svg',
       },
     ],
     [t]
@@ -61,13 +64,8 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </div>
               </div>
 
-              <div className="relative flex min-h-[360px] items-end justify-center md:min-h-[420px]">
-                <div className="absolute bottom-0 h-[24%] w-[88%] rounded-t-[1.6rem] bg-white/70" />
-                <div className="absolute left-[10%] bottom-[10%] h-[230px] w-[120px] rounded-[1.6rem] bg-gradient-to-b from-[#1b1b1b] to-[#080808] shadow-[0_20px_40px_rgba(0,0,0,0.18)]" />
-                <div className="absolute left-[28%] bottom-[10%] h-[250px] w-[120px] rounded-[1.6rem] bg-gradient-to-b from-[#232323] to-[#090909] shadow-[0_20px_40px_rgba(0,0,0,0.18)]" />
-                <div className="absolute left-[48%] bottom-[10%] h-[170px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] to-[#d9d9d9] shadow-[0_14px_28px_rgba(0,0,0,0.14)]" />
-                <div className="absolute left-[58%] bottom-[10%] h-[188px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] to-[#dbe1e8] shadow-[0_14px_28px_rgba(0,0,0,0.14)]" />
-                <div className="absolute left-[69%] bottom-[10%] h-[176px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] to-[#dbe9dd] shadow-[0_14px_28px_rgba(0,0,0,0.14)]" />
+              <div className="relative overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/70 shadow-[0_14px_28px_rgba(0,0,0,0.08)]">
+                <img src={slide.image} alt={slide.title} className="h-[360px] w-full object-cover md:h-[420px]" />
               </div>
             </div>
           </div>
@@ -115,12 +113,13 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            { name: 'PORE ERASER SERUM', desc: '다크모공 클리어, 즉각적인 브라이트닝 솔루션', tag: 'BEST', meta: 'Brightening · Pore Care' },
-            { name: 'HYDROGEL MASK', desc: '시그니처 마스크 포트폴리오를 위한 프리미엄 제안', tag: 'SIGNATURE', meta: 'Premium Mask · Export Ready' },
-            { name: 'SUN CARE LINE', desc: '시즌성 판매와 유통 제안에 적합한 UV 카테고리', tag: 'SEASONAL', meta: 'UV Care · Retail Campaign' },
-          ].map((item, index) => (
+            { name: 'PORE ERASER SERUM', desc: '다크모공 클리어, 즉각적인 브라이트닝 솔루션', tag: 'BEST', meta: 'Brightening · Pore Care', image: '/images/samples/hero-pore-serum.svg' },
+            { name: 'HYDROGEL MASK', desc: '시그니처 마스크 포트폴리오를 위한 프리미엄 제안', tag: 'SIGNATURE', meta: 'Premium Mask · Export Ready', image: '/images/samples/hero-hydrogel-mask.svg' },
+            { name: 'SUN CARE LINE', desc: '시즌성 판매와 유통 제안에 적합한 UV 카테고리', tag: 'SEASONAL', meta: 'UV Care · Retail Campaign', image: '/images/samples/hero-sun-care.svg' },
+          ].map((item) => (
             <article key={item.name} className="overflow-hidden rounded-[1.8rem] border border-black/6 bg-white shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
-              <div className={`relative h-64 ${index === 0 ? 'bg-[#e6ddd1]' : index === 1 ? 'bg-[#ece9e3]' : 'bg-[#dfe9ee]'}`}>
+              <div className="relative h-64 overflow-hidden">
+                <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
                 <span className="absolute left-4 top-4 rounded-full bg-[#111] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">{item.tag}</span>
               </div>
               <div className="p-6">
