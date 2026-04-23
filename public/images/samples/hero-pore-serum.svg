@@ -1,0 +1,25 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 760'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#efe4d4'/>
+      <stop offset='55%' stop-color='#f8f2e8'/>
+      <stop offset='100%' stop-color='#dcc6ab'/>
+    </linearGradient>
+    <linearGradient id='bottleDark' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0%' stop-color='#2d2d2d'/>
+      <stop offset='100%' stop-color='#0b0b0b'/>
+    </linearGradient>
+    <linearGradient id='bottleLight' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0%' stop-color='#ffffff'/>
+      <stop offset='100%' stop-color='#d9d9d9'/>
+    </linearGradient>
+  </defs>
+  <rect width='1200' height='760' fill='url(#bg)'/>
+  <ellipse cx='850' cy='660' rx='250' ry='40' fill='#ffffff88'/>
+  <rect x='700' y='250' width='150' height='320' rx='28' fill='url(#bottleDark)'/>
+  <rect x='885' y='220' width='155' height='350' rx='28' fill='url(#bottleDark)'/>
+  <rect x='635' y='360' width='70' height='210' rx='30' fill='url(#bottleLight)'/>
+  <rect x='1048' y='340' width='70' height='230' rx='30' fill='url(#bottleLight)'/>
+  <circle cx='1060' cy='140' r='18' fill='#fff' opacity='0.45'/>
+  <circle cx='620' cy='180' r='12' fill='#fff' opacity='0.55'/>
+</svg>
