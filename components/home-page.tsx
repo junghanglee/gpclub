@@ -84,7 +84,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
+      <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1.05fr_0.95fr]">
         <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
           <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Partnership</p>
           <h2 className="text-3xl font-semibold md:text-4xl">{t.partnerTitle}</h2>
@@ -106,31 +106,62 @@ export function HomePage({ locale }: { locale: Locale }) {
           </Link>
         </div>
 
-        <div className="rounded-[2rem] bg-[#efe7db] p-8 shadow-soft md:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] bg-[#efe7db] p-8 shadow-soft md:p-10">
+          <div className="absolute right-6 top-6 rounded-full border border-white/70 bg-white/70 px-3 py-1 text-xs font-medium text-accentDeep">
+            Live Assistant Preview
+          </div>
           <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">AI Agent</p>
           <h2 className="text-3xl font-semibold md:text-4xl">{t.aiTitle}</h2>
-          <p className="mt-4 text-base leading-8 text-muted">{t.aiDesc}</p>
-          <div className="mt-8 rounded-[1.5rem] border border-white/60 bg-white/70 p-5">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accentDeep text-sm font-semibold text-white">
-                AI
+          <p className="mt-4 max-w-xl text-base leading-8 text-muted">{t.aiDesc}</p>
+
+          <div className="mt-8 rounded-[1.75rem] border border-white/70 bg-white/80 p-5 shadow-soft backdrop-blur">
+            <div className="flex items-center justify-between border-b border-line pb-4">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accentDeep text-sm font-semibold text-white">
+                  AI
+                </div>
+                <div>
+                  <p className="font-medium">GPCLUB Beauty Advisor</p>
+                  <p className="text-sm text-muted">Multi-language consultation assistant</p>
+                </div>
               </div>
-              <div>
-                <p className="font-medium">GPCLUB Beauty Advisor</p>
-                <p className="text-sm text-muted">Multi-language consultation assistant</p>
+              <div className="h-3 w-3 rounded-full bg-green-500" />
+            </div>
+
+            <div className="space-y-4 py-5">
+              <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-[#f6f1e8] px-4 py-3 text-sm leading-7 text-ink">
+                {t.aiDesc}
+              </div>
+              <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-accentDeep px-4 py-3 text-sm leading-7 text-white">
+                {t.aiExamples[0]}
+              </div>
+              <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-sm leading-7 text-muted shadow-sm">
+                {t.aiBullets[0]} · {t.aiBullets[1]}
               </div>
             </div>
-            <ul className="space-y-3 text-sm leading-7 text-muted">
-              {t.aiBullets.map((item) => (
-                <li key={item} className="rounded-xl bg-white px-4 py-3">
-                  {item}
-                </li>
-              ))}
-            </ul>
+
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted">Quick prompts</p>
+              <div className="flex flex-wrap gap-3">
+                {t.aiExamples.map((item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    className="rounded-full border border-line bg-white px-4 py-2 text-sm text-muted transition hover:border-accent hover:text-ink"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-          <Link href={`/${locale}/ai`} className="mt-8 inline-flex rounded-full border border-accentDeep px-6 py-3 text-sm font-semibold text-accentDeep">
-            {t.aiCta}
-          </Link>
+
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <Link href={`/${locale}/ai`} className="inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white">
+              {t.aiCta}
+            </Link>
+            <p className="text-sm text-muted">24/7 multilingual guidance · product discovery · inquiry routing</p>
+          </div>
         </div>
       </section>
 
