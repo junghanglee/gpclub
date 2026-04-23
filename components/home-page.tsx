@@ -2,6 +2,10 @@ import Link from 'next/link';
 import { Locale, siteContent } from '@/data/site';
 import { SiteShell } from '@/components/site-shell';
 
+function HomeFieldLabel({ children }: { children: React.ReactNode }) {
+  return <span className="mb-2 block text-sm font-medium text-ink">{children}</span>;
+}
+
 export function HomePage({ locale }: { locale: Locale }) {
   const t = siteContent[locale];
 
@@ -129,7 +133,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+        <form className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
           <div className="absolute right-6 top-6 rounded-full border border-[#d9c7ad] bg-[#f8f2ea] px-3 py-1 text-xs font-medium text-accentDeep">
             B2B Inquiry Form
           </div>
@@ -139,39 +143,42 @@ export function HomePage({ locale }: { locale: Locale }) {
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[0]}</span>
-              <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">GPCLUB Vietnam Distribution Co.</div>
+              <HomeFieldLabel>{t.partnerFields[0]}</HomeFieldLabel>
+              <input className="w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent" placeholder="GPCLUB Vietnam Distribution Co." />
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[1]}</span>
-              <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">partner@gpclub.vn</div>
+              <HomeFieldLabel>{t.partnerFields[1]}</HomeFieldLabel>
+              <input type="email" className="w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent" placeholder="partner@gpclub.vn" />
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[2]}</span>
-              <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">Vietnam</div>
+              <HomeFieldLabel>{t.partnerFields[2]}</HomeFieldLabel>
+              <input className="w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent" placeholder="Vietnam" />
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[3]}</span>
-              <div className="flex items-center justify-between rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">
-                <span>Distribution / Supply</span>
-                <span>▾</span>
-              </div>
+              <HomeFieldLabel>{t.partnerFields[3]}</HomeFieldLabel>
+              <select className="w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-ink outline-none transition focus:border-accent">
+                <option>Distribution</option>
+                <option>Supply</option>
+                <option>OEM / ODM</option>
+                <option>Wholesale</option>
+              </select>
             </label>
             <label className="block md:col-span-2">
-              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[4]}</span>
-              <div className="min-h-36 rounded-2xl border border-line bg-sand px-4 py-4 text-sm leading-7 text-muted shadow-sm">
-                We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market.
-              </div>
+              <HomeFieldLabel>{t.partnerFields[4]}</HomeFieldLabel>
+              <textarea
+                className="min-h-36 w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm leading-7 text-ink outline-none transition placeholder:text-muted focus:border-accent"
+                placeholder="We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market."
+              />
             </label>
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Link href={`/${locale}/partnership`} className="inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white">
+            <button type="submit" className="inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white shadow-soft">
               {t.partnerCta}
-            </Link>
+            </button>
             <p className="text-sm text-muted">Business partnership · distribution · supply request</p>
           </div>
-        </div>
+        </form>
 
         <div className="relative overflow-hidden rounded-[2rem] bg-[#efe7db] p-8 shadow-soft md:p-10">
           <div className="absolute right-6 top-6 rounded-full border border-white/70 bg-white/70 px-3 py-1 text-xs font-medium text-accentDeep">
