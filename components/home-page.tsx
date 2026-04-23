@@ -5,61 +5,30 @@ import { useMemo, useState } from 'react';
 import { Locale, siteContent } from '@/data/site';
 import { SiteShell } from '@/components/site-shell';
 
-function HomeFieldLabel({ children }: { children: React.ReactNode }) {
-  return <span className="mb-2 block text-sm font-medium text-[#151515]">{children}</span>;
-}
-
 export function HomePage({ locale }: { locale: Locale }) {
   const t = siteContent[locale];
   const heroSlides = useMemo(
     () => [
       {
-        eyebrow: t.heroEyebrow,
-        kicker: 'Vietnam-based Korean beauty portfolio',
-        title: t.heroTitle,
+        label: 'Best Seller',
+        title: 'PORE ERASER SERUM',
+        subtitle: '다크모공 클리어, 다운타임 없는 즉각 솔루션',
         desc: t.heroDesc,
-        ctaPrimary: t.primaryCta,
-        ctaSecondary: t.secondaryCta,
-        campaignTitle: 'Niacinamide Line',
-        palette: 'bg-[linear-gradient(90deg,#efefef_0%,#f8f8f8_22%,#f2f0ed_46%,#ebe7df_100%)]',
-        stage: 'niacinamide',
-        badge: 'NEW SERUM',
+        tone: 'from-[#eee6db] via-[#f6f1ea] to-[#e2d2bf]',
       },
       {
-        eyebrow: 'Hydrogel Signature Promotion',
-        kicker: 'Hydrogel mask campaign visual',
-        title: 'Signature hydrogel care for premium sheet mask positioning',
-        desc: 'A stronger campaign-style visual block for buyers looking for hero products, premium mask storytelling, and signature-line presentation.',
-        ctaPrimary: 'Explore Product Portfolio',
-        ctaSecondary: 'About GPCLUB',
-        campaignTitle: 'Bio Hydrogel Mask',
-        palette: 'bg-[linear-gradient(90deg,#ece8de_0%,#f5f2ec_30%,#e3d7c7_100%)]',
-        stage: 'hydrogel',
-        badge: 'BEST MASK',
+        label: 'Signature Mask',
+        title: 'BIO HYDROGEL MASK',
+        subtitle: '프리미엄 마스크 포트폴리오를 위한 시그니처 라인',
+        desc: t.brandDesc,
+        tone: 'from-[#ece7de] via-[#f6f2eb] to-[#ded2c4]',
       },
       {
-        eyebrow: 'Seasonal UV Care Promotion',
-        kicker: 'Bright outdoor protection line',
-        title: 'Sun care campaign for seasonal distribution and retail demand',
-        desc: 'A clean seasonal promotion block designed for UV care storytelling, category expansion, and eye-catching campaign merchandising.',
-        ctaPrimary: 'Explore Product Portfolio',
-        ctaSecondary: 'About GPCLUB',
-        campaignTitle: 'Sun Care',
-        palette: 'bg-[linear-gradient(90deg,#edf4f8_0%,#f6fbfe_30%,#dbe8ef_100%)]',
-        stage: 'sun',
-        badge: 'UV 77%',
-      },
-      {
-        eyebrow: 'Black Signature Mask Promotion',
-        kicker: 'Premium dark-tone campaign line',
-        title: 'Bold premium mask storytelling for signature B2B positioning',
-        desc: 'A darker campaign direction for standout hero products, premium visual merchandising, and brand differentiation across distributors and multi-national buyers.',
-        ctaPrimary: 'Explore Product Portfolio',
-        ctaSecondary: 'About GPCLUB',
-        campaignTitle: 'Black Signature',
-        palette: 'bg-[linear-gradient(90deg,#ddd8d0_0%,#f4f1ec_25%,#d8c7b2_100%)]',
-        stage: 'black',
-        badge: 'SIGNATURE',
+        label: 'Seasonal Care',
+        title: 'SUN CARE LINE',
+        subtitle: '베트남 리테일과 시즌 전개에 적합한 UV 케어',
+        desc: t.partnerDesc,
+        tone: 'from-[#e6eef2] via-[#f6fbfd] to-[#d9e8ee]',
       },
     ],
     [t]
@@ -69,362 +38,71 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <SiteShell locale={locale}>
-      <section className="relative overflow-hidden border-b border-black/5 bg-[#f7f5f1]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),_rgba(247,245,241,0.88)_34%,_rgba(236,233,227,0.96)_100%)]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-8 md:py-10">
-          <div className={`overflow-hidden rounded-[2.3rem] border border-black/6 ${slide.palette} shadow-[0_28px_70px_rgba(0,0,0,0.07)]`}>
-            <div className="grid min-h-[560px] items-center gap-10 px-8 py-10 md:grid-cols-[0.95fr_1.05fr] md:px-12 md:py-14">
-              <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/80 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.24em] text-[#666] backdrop-blur">
-                  <span className="h-2 w-2 rounded-full bg-[#111]" />
-                  {slide.eyebrow}
-                </div>
-
-                <p className="mt-10 text-xl font-medium tracking-[-0.03em] text-[#181818] md:text-3xl">{slide.kicker}</p>
-                <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.05em] text-[#111] md:text-8xl">
-                  {slide.title}
-                </h1>
-                <p className="mt-7 max-w-xl text-base leading-8 text-[#666] md:text-lg">{slide.desc}</p>
-
+      <section className="border-b border-black/5 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-6">
+          <div className={`overflow-hidden rounded-[2rem] bg-gradient-to-r ${slide.tone} p-8 md:p-12`}>
+            <div className="grid items-center gap-10 md:grid-cols-[0.95fr_1.05fr]">
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.24em] text-[#666]">{slide.label}</p>
+                <h1 className="mt-5 text-5xl font-semibold tracking-[-0.05em] text-[#111] md:text-7xl">{slide.title}</h1>
+                <p className="mt-4 text-xl font-medium tracking-[-0.03em] text-[#222] md:text-2xl">{slide.subtitle}</p>
+                <p className="mt-6 max-w-xl text-sm leading-7 text-[#666] md:text-base">{slide.desc}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href={`/${locale}/products`} className="rounded-full bg-[#111] px-7 py-3.5 text-sm font-medium text-white transition hover:-translate-y-0.5">
-                    {slide.ctaPrimary}
+                  <Link href={`/${locale}/products`} className="rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
+                    {t.primaryCta}
                   </Link>
-                  <Link href={`/${locale}/brand`} className="rounded-full border border-black/10 bg-white px-7 py-3.5 text-sm font-medium text-[#111] transition hover:-translate-y-0.5">
-                    {slide.ctaSecondary}
+                  <Link href={`/${locale}/partnership`} className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#111]">
+                    {t.partnerCta}
                   </Link>
                 </div>
-
-                <div className="mt-10 flex items-center gap-3">
-                  {heroSlides.map((_, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => setActiveSlide(idx)}
-                      className={idx === activeSlide ? 'h-2.5 w-8 rounded-full bg-[#111]' : 'h-2.5 w-2.5 rounded-full bg-black/20'}
-                      aria-label={`Go to slide ${idx + 1}`}
-                    />
-                  ))}
-                  <span className="ml-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">
-                    {String(activeSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
-                  {heroSlides.slice(0, 3).map((item, idx) => (
-                    <button
-                      key={item.campaignTitle}
-                      type="button"
-                      onClick={() => setActiveSlide(idx)}
-                      className={`rounded-[1.4rem] border px-4 py-4 text-left text-sm shadow-sm transition ${
-                        idx === activeSlide ? 'border-black/10 bg-white text-[#111]' : 'border-black/6 bg-white/55 text-[#666]'
-                      }`}
-                    >
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8a8a8a]">Campaign</p>
-                      <p className="mt-2 font-medium">{item.campaignTitle}</p>
-                    </button>
-                  ))}
-                </div>
               </div>
 
-              <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[500px]">
-                <div className="absolute right-[-2%] top-[8%] h-[78%] w-[78%] rounded-full border-[10px] border-[#d6bf94] opacity-80" />
-                <div className="absolute right-[8%] bottom-[8%] h-[62%] w-[62%] rounded-full border-[8px] border-[#eadab4] opacity-80" />
-                <div className="absolute left-[6%] top-[6%] h-8 w-8 rounded-full bg-white/70 blur-sm" />
-                <div className="absolute right-[18%] top-[18%] h-6 w-6 rounded-full bg-white/80 blur-sm" />
-                <div className="absolute bottom-[20%] left-[14%] h-5 w-5 rounded-full bg-white/70 blur-sm" />
-                <div className="absolute bottom-0 h-[30%] w-[88%] rounded-t-[2rem] bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.05)]" />
-
-                {slide.stage === 'niacinamide' && (
-                  <div className="relative z-10 flex w-full max-w-[620px] items-end justify-center gap-4 md:gap-5">
-                    <div className="hidden h-[280px] w-[150px] rounded-[1.6rem] bg-gradient-to-b from-[#171717] to-[#0b0b0b] shadow-[0_18px_40px_rgba(0,0,0,0.22)] md:block" />
-                    <div className="hidden h-[300px] w-[150px] rounded-[1.6rem] bg-gradient-to-b from-[#1f1f1f] to-[#0b0b0b] shadow-[0_18px_40px_rgba(0,0,0,0.22)] md:block" />
-                    <div className="hidden h-[320px] w-[150px] rounded-[1.6rem] bg-gradient-to-b from-[#1b1b1b] to-[#080808] shadow-[0_18px_40px_rgba(0,0,0,0.24)] md:block" />
-                    <div className="absolute bottom-[8%] left-[34%] h-[150px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#f8f8f8] via-[#ececec] to-[#d9d9d9] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                    <div className="absolute bottom-[8%] left-[43%] h-[170px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fcfcfc] via-[#eff0f2] to-[#d8dee6] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                    <div className="absolute bottom-[8%] left-[52%] h-[158px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fcfcfc] via-[#eff6ef] to-[#dce9dc] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                    <div className="absolute bottom-[8%] left-[61%] h-[164px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fcfcfc] via-[#f4f4f4] to-[#d8d8d8] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                  </div>
-                )}
-
-                {slide.stage === 'hydrogel' && (
-                  <div className="relative z-10 flex h-full w-full items-end justify-center">
-                    <div className="absolute left-[10%] top-[12%] h-[250px] w-[170px] rounded-[1.8rem] bg-gradient-to-b from-[#222] to-[#0d0d0d] shadow-[0_18px_40px_rgba(0,0,0,0.22)]" />
-                    <div className="absolute left-[36%] top-[8%] h-[290px] w-[190px] rounded-[1.8rem] bg-gradient-to-b from-[#1b1b1b] to-[#090909] shadow-[0_18px_40px_rgba(0,0,0,0.24)]" />
-                    <div className="absolute right-[8%] bottom-[9%] h-[330px] w-[220px] rounded-[2rem] bg-[linear-gradient(180deg,#f0d7c8_0%,#caa998_100%)] shadow-[0_20px_44px_rgba(0,0,0,0.14)]" />
-                  </div>
-                )}
-
-                {slide.stage === 'sun' && (
-                  <div className="relative z-10 flex h-full w-full items-end justify-center">
-                    <div className="absolute inset-x-[8%] top-[10%] h-[55%] rounded-[2rem] bg-[linear-gradient(180deg,#dcecf7_0%,#f7fbff_70%,transparent_100%)]" />
-                    <div className="absolute bottom-[8%] left-[22%] h-[168px] w-[64px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#eef4f8] to-[#dbe6eb] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                    <div className="absolute bottom-[8%] left-[34%] h-[178px] w-[64px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#f1f6fa] to-[#dde8ed] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                    <div className="absolute bottom-[8%] left-[46%] h-[188px] w-[66px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#edf5fa] to-[#dae4ea] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                    <div className="absolute bottom-[8%] left-[58%] h-[174px] w-[64px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#eef3f8] to-[#dbe3e8] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                  </div>
-                )}
-
-                {slide.stage === 'black' && (
-                  <div className="relative z-10 flex h-full w-full items-end justify-center">
-                    <div className="absolute left-[18%] bottom-[9%] h-[300px] w-[160px] rounded-[1.8rem] bg-gradient-to-b from-[#1e1e1e] to-[#080808] shadow-[0_18px_40px_rgba(0,0,0,0.24)]" />
-                    <div className="absolute left-[40%] bottom-[9%] h-[330px] w-[170px] rounded-[1.8rem] bg-gradient-to-b from-[#161616] to-[#050505] shadow-[0_20px_44px_rgba(0,0,0,0.26)]" />
-                    <div className="absolute right-[12%] bottom-[12%] h-[180px] w-[70px] rounded-[2rem] bg-gradient-to-b from-[#f6f6f6] via-[#e9e9e9] to-[#cfcfcf] shadow-[0_16px_30px_rgba(0,0,0,0.14)]" />
-                  </div>
-                )}
-
-                <div className="absolute bottom-[4%] left-[50%] z-20 flex h-[90px] w-[90px] -translate-x-1/2 items-center justify-center rounded-full border-[6px] border-[#d3b26b] bg-white shadow-[0_14px_30px_rgba(0,0,0,0.12)]">
-                  <div className="text-center">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#8b7449]">Campaign</p>
-                    <p className="mt-1 text-xs font-semibold text-[#8b7449]">{slide.badge}</p>
-                  </div>
-                </div>
+              <div className="relative flex min-h-[360px] items-end justify-center md:min-h-[420px]">
+                <div className="absolute bottom-0 h-[24%] w-[88%] rounded-t-[1.6rem] bg-white/70" />
+                <div className="absolute left-[10%] bottom-[10%] h-[230px] w-[120px] rounded-[1.6rem] bg-gradient-to-b from-[#1b1b1b] to-[#080808] shadow-[0_20px_40px_rgba(0,0,0,0.18)]" />
+                <div className="absolute left-[28%] bottom-[10%] h-[250px] w-[120px] rounded-[1.6rem] bg-gradient-to-b from-[#232323] to-[#090909] shadow-[0_20px_40px_rgba(0,0,0,0.18)]" />
+                <div className="absolute left-[48%] bottom-[10%] h-[170px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] to-[#d9d9d9] shadow-[0_14px_28px_rgba(0,0,0,0.14)]" />
+                <div className="absolute left-[58%] bottom-[10%] h-[188px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] to-[#dbe1e8] shadow-[0_14px_28px_rgba(0,0,0,0.14)]" />
+                <div className="absolute left-[69%] bottom-[10%] h-[176px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] to-[#dbe9dd] shadow-[0_14px_28px_rgba(0,0,0,0.14)]" />
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
-        <div className="grid gap-6 md:grid-cols-[1.12fr_0.88fr]">
-          <article className="overflow-hidden rounded-[2rem] border border-black/6 bg-[linear-gradient(120deg,#f5f4f1_0%,#ece9e3_50%,#ddd6ca_100%)] shadow-[0_16px_36px_rgba(0,0,0,0.05)]">
-            <div className="grid min-h-[280px] gap-8 px-8 py-8 md:grid-cols-[0.9fr_1.1fr] md:px-10 md:py-10">
-              <div className="flex flex-col justify-center">
-                <p className="text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Niacinamide Line</p>
-                <h3 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-4xl">Brightening care for modern B2B selection</h3>
-                <p className="mt-4 max-w-md text-sm leading-7 text-[#666]">
-                  A clean portfolio story built around toner, serum, and sun care style presentation — ideal for buyers looking for a modern Korean skincare line.
-                </p>
-                <Link href={`/${locale}/products`} className="mt-6 inline-flex w-fit rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
-                  Explore line
-                </Link>
-              </div>
-              <div className="relative flex items-end justify-center">
-                <div className="absolute bottom-0 h-[26%] w-[90%] rounded-t-[1.6rem] bg-white/80" />
-                <div className="absolute left-[8%] bottom-[8%] h-[155px] w-[58px] rounded-[2rem] bg-gradient-to-b from-[#fbfbfb] via-[#ececec] to-[#d7d7d7] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
-                <div className="absolute left-[24%] bottom-[8%] h-[178px] w-[62px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#eef1f5] to-[#dbe1e8] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
-                <div className="absolute left-[42%] bottom-[8%] h-[164px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#eff4ef] to-[#dde9dd] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
-                <div className="absolute left-[60%] bottom-[8%] h-[168px] w-[60px] rounded-[2rem] bg-gradient-to-b from-[#ffffff] via-[#f4f4f4] to-[#d8d8d8] shadow-[0_14px_26px_rgba(0,0,0,0.12)]" />
-              </div>
-            </div>
-          </article>
-
-          <div className="grid gap-6">
-            <article className="overflow-hidden rounded-[2rem] border border-black/6 bg-[linear-gradient(135deg,#ece8de_0%,#e2d8ca_100%)] p-7 shadow-[0_16px_36px_rgba(0,0,0,0.05)]">
-              <p className="text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Bio Hydrogel Mask</p>
-              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[#111]">Hydrogel-focused signature promotion block</h3>
-              <p className="mt-4 max-w-sm text-sm leading-7 text-[#666]">A campaign-style section suitable for hero follow-up, best item promotion, or signature line storytelling.</p>
-            </article>
-
-            <article className="overflow-hidden rounded-[2rem] border border-black/6 bg-[linear-gradient(135deg,#eef5f8_0%,#dae8ef_100%)] p-7 shadow-[0_16px_36px_rgba(0,0,0,0.05)]">
-              <p className="text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Sun Care Promotion</p>
-              <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-[#111]">Seasonal visual block for UV and outdoor care</h3>
-              <p className="mt-4 max-w-sm text-sm leading-7 text-[#666]">A clean seasonal panel that can later take real JMsolution-style campaign visuals for sun care or brightening launches.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-8 flex items-end justify-between gap-6">
-          <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Brand Story</p>
-            <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">{t.brandTitle}</h2>
-          </div>
-        </div>
-        <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[2rem] border border-black/6 bg-white p-8 shadow-[0_14px_40px_rgba(0,0,0,0.04)] md:p-10">
-            <p className="max-w-3xl text-base leading-8 text-[#666] md:text-lg">{t.brandDesc}</p>
-          </div>
-          <div className="grid gap-4">
-            {t.values.map((value) => (
-              <div key={value} className="rounded-[1.6rem] border border-black/6 bg-white px-5 py-6 text-sm font-medium text-[#1a1a1a] shadow-[0_10px_28px_rgba(0,0,0,0.035)]">
-                {value}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-10 flex items-end justify-between gap-6">
-          <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Portfolio</p>
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">{t.featuredTitle}</h2>
-          </div>
-          <Link href={`/${locale}/products`} className="hidden text-sm text-[#666] md:block">
-            View More →
-          </Link>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {t.featuredItems.map((item, index) => (
-            <article key={item.name} className="rounded-[2rem] border border-black/6 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.04)] transition hover:-translate-y-1">
-              <div className="mb-6 flex aspect-[4/4.7] items-center justify-center rounded-[1.6rem] bg-gradient-to-b from-[#f9f6f0] to-[#ede3d6]">
-                <div className={`h-44 w-24 rounded-[1.5rem] shadow-[0_12px_30px_rgba(0,0,0,0.08)] ${index === 1 ? 'bg-[#d6d6d6]' : index === 2 ? 'bg-[#dbc7b8]' : 'bg-[#d7b389]'}`} />
-              </div>
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-xl font-semibold tracking-[-0.02em] text-[#111]">{item.name}</h3>
-                <span className="rounded-full bg-[#f4f1ea] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#777]">Core</span>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-[#666]">{item.desc}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-black/5 bg-white/70">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Measured Direction</p>
-              <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">Supply-ready portfolio logic for B2B markets</h2>
-            </div>
-            <p className="max-w-xl text-sm leading-7 text-[#666]">
-              Inspired by editorial skincare-tech storytelling, this section frames GPCLUB’s product strategy as category-driven, market-ready, and buyer-friendly.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { metric: '3', label: 'core product directions', desc: 'Mask, luminous care, calming/sun care' },
-              { metric: '24/7', label: 'AI consultation flow', desc: 'buyer questions and product routing' },
-              { metric: 'B2B', label: 'business-first structure', desc: 'for Vietnam and multinational partners' },
-            ].map((item) => (
-              <div key={item.label} className="rounded-[2rem] border border-black/6 bg-white p-7 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
-                <p className="text-4xl font-semibold tracking-[-0.04em] text-[#111]">{item.metric}</p>
-                <p className="mt-3 text-xs uppercase tracking-[0.22em] text-[#7a7a7a]">{item.label}</p>
-                <p className="mt-4 text-sm leading-7 text-[#666]">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[1.05fr_0.95fr]">
-        <form className="relative overflow-hidden rounded-[2rem] border border-black/6 bg-white p-8 shadow-[0_16px_40px_rgba(0,0,0,0.05)] md:p-10">
-          <div className="absolute right-6 top-6 rounded-full border border-black/8 bg-[#f3efe8] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#666]">
-            B2B Inquiry
-          </div>
-          <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Partnership</p>
-          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-4xl">{t.partnerTitle}</h2>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-[#666]">{t.partnerDesc}</p>
-
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <label className="block">
-              <HomeFieldLabel>{t.partnerFields[0]}</HomeFieldLabel>
-              <input className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none transition placeholder:text-[#8a8a8a] focus:border-[#111]" placeholder="GPCLUB Vietnam Distribution Co." />
-            </label>
-            <label className="block">
-              <HomeFieldLabel>{t.partnerFields[1]}</HomeFieldLabel>
-              <input type="email" className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none transition placeholder:text-[#8a8a8a] focus:border-[#111]" placeholder="partner@gpclub.vn" />
-            </label>
-            <label className="block">
-              <HomeFieldLabel>{t.partnerFields[2]}</HomeFieldLabel>
-              <input className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none transition placeholder:text-[#8a8a8a] focus:border-[#111]" placeholder="Vietnam" />
-            </label>
-            <label className="block">
-              <HomeFieldLabel>{t.partnerFields[3]}</HomeFieldLabel>
-              <select className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none transition focus:border-[#111]">
-                <option>Distribution</option>
-                <option>Supply</option>
-                <option>OEM / ODM</option>
-                <option>Wholesale</option>
-              </select>
-            </label>
-            <label className="block md:col-span-2">
-              <HomeFieldLabel>{t.partnerFields[4]}</HomeFieldLabel>
-              <textarea
-                className="min-h-36 w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm leading-7 text-[#111] outline-none transition placeholder:text-[#8a8a8a] focus:border-[#111]"
-                placeholder="We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market."
+          <div className="mt-4 flex items-center gap-3">
+            {heroSlides.map((item, idx) => (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => setActiveSlide(idx)}
+                className={idx === activeSlide ? 'h-2.5 w-8 rounded-full bg-[#111]' : 'h-2.5 w-2.5 rounded-full bg-black/20'}
+                aria-label={`Go to banner ${idx + 1}`}
               />
-            </label>
-          </div>
-
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <button type="submit" className="inline-flex rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
-              {t.partnerCta}
-            </button>
-            <p className="text-sm text-[#666]">Business partnership · distribution · supply request</p>
-          </div>
-        </form>
-
-        <div className="relative overflow-hidden rounded-[2rem] bg-[#eeebe4] p-8 shadow-[0_16px_40px_rgba(0,0,0,0.05)] md:p-10">
-          <div className="absolute right-6 top-6 rounded-full border border-white/70 bg-white/75 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#666]">
-            AI Preview
-          </div>
-          <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">AI Agent</p>
-          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-4xl">{t.aiTitle}</h2>
-          <p className="mt-4 max-w-xl text-base leading-8 text-[#666]">{t.aiDesc}</p>
-
-          <div className="mt-8 rounded-[1.75rem] border border-white/70 bg-white/80 p-5 shadow-[0_10px_24px_rgba(0,0,0,0.04)] backdrop-blur">
-            <div className="flex items-center justify-between border-b border-black/6 pb-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#111] text-sm font-semibold text-white">AI</div>
-                <div>
-                  <p className="font-medium text-[#111]">GPCLUB Beauty Advisor</p>
-                  <p className="text-sm text-[#777]">Multi-language consultation assistant</p>
-                </div>
-              </div>
-              <div className="h-3 w-3 rounded-full bg-green-500" />
-            </div>
-
-            <div className="space-y-4 py-5">
-              <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-[#f3eee6] px-4 py-3 text-sm leading-7 text-[#111]">
-                {t.aiDesc}
-              </div>
-              <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-[#111] px-4 py-3 text-sm leading-7 text-white">
-                {t.aiExamples[0]}
-              </div>
-              <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-sm leading-7 text-[#666] shadow-sm">
-                {t.aiBullets[0]} · {t.aiBullets[1]}
-              </div>
-            </div>
-
-            <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#888]">Quick prompts</p>
-              <div className="flex flex-wrap gap-3">
-                {t.aiExamples.map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    className="rounded-full border border-black/8 bg-white px-4 py-2 text-sm text-[#666] transition hover:border-black/20 hover:text-[#111]"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Link href={`/${locale}/ai`} className="inline-flex rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
-              {t.aiCta}
-            </Link>
-            <p className="text-sm text-[#666]">24/7 multilingual guidance · product discovery · inquiry routing</p>
+            ))}
+            <span className="ml-2 text-xs uppercase tracking-[0.2em] text-[#888]">
+              {String(activeSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
+            </span>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Best Seller</p>
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">지금 가장 주목해야 할 핵심 제품</h2>
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Best Seller</p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">지금 가장 인기있는 제품</h2>
           </div>
-          <p className="max-w-xl text-sm leading-7 text-[#666]">
-            베트남 및 다국적 바이어 기준으로 즉시 제안하기 좋은 핵심 라인을 중심으로 노출합니다.
-          </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            { title: 'PORE / BRIGHTENING SERUM', desc: '브라이트닝 및 결 정돈 중심의 세럼 제안', tone: 'bg-[#e9dfd2]' },
-            { title: 'HYDROGEL MASK', desc: '프리미엄 마스크 카테고리용 시그니처 제안', tone: 'bg-[#ecebe8]' },
-            { title: 'SUN CARE LINE', desc: '시즌 캠페인과 리테일 전개에 적합한 선케어 라인', tone: 'bg-[#ded7cd]' },
-          ].map((item) => (
-            <article key={item.title} className="overflow-hidden rounded-[2rem] border border-black/6 bg-white shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
-              <div className={`h-56 ${item.tone}`} />
+            { name: 'PORE ERASER SERUM', desc: '다크모공 클리어, 즉각적인 브라이트닝 솔루션' },
+            { name: 'HYDROGEL MASK', desc: '시그니처 마스크 포트폴리오를 위한 프리미엄 제안' },
+            { name: 'SUN CARE LINE', desc: '시즌성 판매와 유통 제안에 적합한 UV 카테고리' },
+          ].map((item, index) => (
+            <article key={item.name} className="overflow-hidden rounded-[1.8rem] border border-black/6 bg-white shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+              <div className={`h-64 ${index === 0 ? 'bg-[#e6ddd1]' : index === 1 ? 'bg-[#ece9e3]' : 'bg-[#dfe9ee]'}`} />
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#8a8a8a]">Best Item</p>
-                <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-[#111]">{item.title}</h3>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a8a]">Best Item</p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[#111]">{item.name}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#666]">{item.desc}</p>
               </div>
             </article>
@@ -432,49 +110,105 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Review / Trust</p>
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">구매자와 파트너가 신뢰할 수 있는 제안 구조</h2>
+      <section className="bg-[#faf8f4] py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Brand Story</p>
+              <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">전문적인 피부 개선과 비즈니스 제안</h2>
+            </div>
           </div>
-          <p className="max-w-xl text-sm leading-7 text-[#666]">
-            제품 자체보다도, 어떤 시장과 어떤 파트너에게 맞는지를 쉽게 이해할 수 있도록 정리합니다.
-          </p>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              '전문적인 피부 개선',
+              '인체적용시험 기반 더마 사이언스',
+              '지속적인 아름다움을 위한 에스테틱 방향성',
+            ].map((item) => (
+              <div key={item} className="rounded-[1.8rem] border border-black/6 bg-white p-8 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+                <p className="text-lg font-medium leading-8 text-[#222]">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Review / Trust</p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">고민이 될 땐 신뢰할 수 있는 제안</h2>
+          </div>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            '베트남 유통 파트너 대상 라인 추천',
-            '다국적 바이어 대상 카테고리 제안',
-            'AI 상담과 문의 폼으로 바로 연결되는 구조',
-          ].map((title) => (
-            <article key={title} className="rounded-[2rem] border border-black/6 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
-              <p className="text-xs uppercase tracking-[0.22em] text-[#8a8a8a]">Trust Point</p>
-              <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-[#111]">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[#666]">GPCLUB은 제품 소개를 넘어 실제 공급/유통 대화를 시작하기 쉬운 구조를 제공합니다.</p>
+            '베트남 유통 파트너 대상 제품 제안',
+            '다국적 바이어 대상 카테고리 설명',
+            'AI 상담과 문의 폼을 통한 즉시 연결',
+          ].map((item) => (
+            <article key={item} className="rounded-[1.8rem] border border-black/6 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a8a]">Trust Point</p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[#111]">{item}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#666]">GPCLUB은 제품 소개를 넘어 실제 공급과 유통 대화를 시작하기 쉬운 구조를 제공합니다.</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="rounded-[2.2rem] bg-[#111] px-8 py-12 text-white md:px-12 md:py-14">
-          <p className="text-xs uppercase tracking-[0.24em] text-white/55">Contact</p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] md:text-4xl">{t.contactTitle}</h2>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-white/72">{t.contactDesc}</p>
-          <Link href={`/${locale}/contact`} className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#111]">
-            {t.contactCta}
-          </Link>
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="grid gap-8 md:grid-cols-[1.05fr_0.95fr]">
+          <form className="rounded-[1.8rem] border border-black/6 bg-white p-8 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Partnership</p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">{t.partnerTitle}</h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-[#666]">{t.partnerDesc}</p>
+            <div className="mt-8 grid gap-5 md:grid-cols-2">
+              <label className="block">
+                <HomeFieldLabel>{t.partnerFields[0]}</HomeFieldLabel>
+                <input className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="GPCLUB Vietnam Distribution Co." />
+              </label>
+              <label className="block">
+                <HomeFieldLabel>{t.partnerFields[1]}</HomeFieldLabel>
+                <input type="email" className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="partner@gpclub.vn" />
+              </label>
+              <label className="block">
+                <HomeFieldLabel>{t.partnerFields[2]}</HomeFieldLabel>
+                <input className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="Vietnam" />
+              </label>
+              <label className="block">
+                <HomeFieldLabel>{t.partnerFields[3]}</HomeFieldLabel>
+                <select className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none">
+                  <option>Distribution</option>
+                  <option>Supply</option>
+                  <option>OEM / ODM</option>
+                  <option>Wholesale</option>
+                </select>
+              </label>
+              <label className="block md:col-span-2">
+                <HomeFieldLabel>{t.partnerFields[4]}</HomeFieldLabel>
+                <textarea className="min-h-36 w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm leading-7 text-[#111] outline-none" placeholder="We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market." />
+              </label>
+            </div>
+            <button type="submit" className="mt-8 inline-flex rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
+              {t.partnerCta}
+            </button>
+          </form>
+
+          <div className="rounded-[1.8rem] bg-[#111] p-8 text-white shadow-[0_14px_34px_rgba(0,0,0,0.08)]">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-white/55">AI Consultation</p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em]">{t.aiTitle}</h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-white/72">{t.aiDesc}</p>
+            <div className="mt-8 space-y-3">
+              {t.aiExamples.map((item) => (
+                <div key={item} className="rounded-xl bg-white/10 px-4 py-3 text-sm text-white/85">
+                  {item}
+                </div>
+              ))}
+            </div>
+            <Link href={`/${locale}/ai`} className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#111]">
+              {t.aiCta}
+            </Link>
+          </div>
         </div>
       </section>
-
-      <Link
-        href={`/${locale}/ai`}
-        className="fixed bottom-6 right-6 z-30 inline-flex items-center gap-3 rounded-full bg-[#111] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5"
-      >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">AI</span>
-        Start Consultation
-      </Link>
     </SiteShell>
   );
 }
