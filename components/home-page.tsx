@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ReactNode, useMemo, useState } from 'react';
+import { FormEvent, ReactNode, useMemo, useState } from 'react';
 import { Locale, siteContent } from '@/data/site';
 import { SiteShell } from '@/components/site-shell';
 
@@ -41,7 +41,33 @@ export function HomePage({ locale }: { locale: Locale }) {
     [t]
   );
   const [activeSlide, setActiveSlide] = useState(0);
+  const [inquiry, setInquiry] = useState({
+    company: '',
+    email: '',
+    country: '',
+    type: 'Distribution',
+    detail: '',
+  });
+  const [inquiryStatus, setInquiryStatus] = useState<'idle' | 'invalid' | 'done'>('idle');
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiPreview, setAiPreview] = useState(t.aiExamples[0]);
   const slide = heroSlides[activeSlide];
+
+  const handleInquirySubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!inquiry.company.trim() || !inquiry.email.trim() || !inquiry.detail.trim()) {
+      setInquiryStatus('invalid');
+      return;
+    }
+    setInquiryStatus('done');
+  };
+
+  const handleAiSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!aiPrompt.trim()) return;
+    setAiPreview(`Preview response: ${aiPrompt.slice(0, 80)}${aiPrompt.length > 80 ? '…' : ''}`);
+    setAiPrompt('');
+  };
 
   return (
     <SiteShell locale={locale}>
@@ -51,10 +77,10 @@ export function HomePage({ locale }: { locale: Locale }) {
             <div className="grid items-center gap-10 md:grid-cols-[0.95fr_1.05fr]">
               <div>
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-[#666]">{slide.label}</p>
-                <h1 className="mt-5 text-5xl font-semibold tracking-[-0.05em] text-[#111] md:text-7xl">{slide.title}</h1>
-                <p className="mt-4 text-xl font-medium tracking-[-0.03em] text-[#222] md:text-2xl">{slide.subtitle}</p>
+                <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-[#111] md:text-7xl">{slide.title}</h1>
+                <p className="mt-4 text-lg font-medium tracking-[-0.03em] text-[#222] md:text-2xl">{slide.subtitle}</p>
                 <p className="mt-6 max-w-xl text-sm leading-7 text-[#666] md:text-base">{slide.desc}</p>
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link href={`/${locale}/products`} className="rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
                     {t.primaryCta}
                   </Link>
@@ -88,12 +114,12 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-8">
-        <div className="grid gap-3 rounded-[1.4rem] border border-black/6 bg-white p-4 md:grid-cols-4">
+        <div className="grid gap-3 overflow-x-auto rounded-[1.4rem] border border-black/6 bg-white p-4 md:grid-cols-4">
           {['Mask Packs', 'Ampoule / Serum', 'Sun Care', 'B2B Set Offers'].map((item) => (
             <button
               key={item}
               type="button"
-              className="rounded-xl bg-[#f5f2ec] px-4 py-3 text-left text-sm font-medium text-[#333] transition hover:bg-[#ece7de]"
+              className="min-w-[180px] rounded-xl bg-[#f5f2ec] px-4 py-3 text-left text-sm font-medium text-[#333] transition hover:bg-[#ece7de] md:min-w-0"
             >
               {item}
             </button>
@@ -105,7 +131,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Best Seller</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">지금 가장 인기있는 제품</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-[#111] md:text-4xl">지금 가장 인기있는 제품</h2>
           </div>
           <Link href={`/${locale}/products`} className="hidden rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-[#333] md:inline-flex">
             View All Portfolio
@@ -143,7 +169,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Brand Story</p>
-              <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">전문적인 피부 개선과 비즈니스 제안</h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-[#111] md:text-4xl">전문적인 피부 개선과 비즈니스 제안</h2>
             </div>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -164,7 +190,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <div className="rounded-[1.8rem] border border-black/6 bg-[linear-gradient(90deg,#111_0%,#2b2b2b_52%,#3a3a3a_100%)] px-7 py-8 text-white md:px-10">
           <p className="text-xs uppercase tracking-[0.2em] text-white/70">ONE SHOT ONE SOLUTION</p>
           <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <h3 className="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">with GPCLUB · Buyer-first B2B curation</h3>
+            <h3 className="text-2xl font-semibold tracking-[-0.03em] md:text-4xl">with GPCLUB · Buyer-first B2B curation</h3>
             <Link href={`/${locale}/products`} className="inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#111]">
               Explore Best Line
             </Link>
@@ -176,7 +202,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Review / Trust</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">고민이 될 땐 신뢰할 수 있는 제안</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-[#111] md:text-4xl">고민이 될 땐 신뢰할 수 있는 제안</h2>
           </div>
         </div>
 
@@ -210,27 +236,27 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-8 md:grid-cols-[1.05fr_0.95fr]">
-          <form className="rounded-[1.8rem] border border-black/6 bg-white p-8 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <form onSubmit={handleInquirySubmit} className="rounded-[1.8rem] border border-black/6 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.04)] md:p-8">
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Partnership</p>
             <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">{t.partnerTitle}</h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-[#666]">{t.partnerDesc}</p>
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               <label className="block">
                 <HomeFieldLabel>{t.partnerFields[0]}</HomeFieldLabel>
-                <input className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="GPCLUB Vietnam Distribution Co." />
+                <input value={inquiry.company} onChange={(e) => setInquiry((prev) => ({ ...prev, company: e.target.value }))} className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="GPCLUB Vietnam Distribution Co." />
               </label>
               <label className="block">
                 <HomeFieldLabel>{t.partnerFields[1]}</HomeFieldLabel>
-                <input type="email" className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="partner@gpclub.vn" />
+                <input type="email" value={inquiry.email} onChange={(e) => setInquiry((prev) => ({ ...prev, email: e.target.value }))} className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="partner@gpclub.vn" />
               </label>
               <label className="block">
                 <HomeFieldLabel>{t.partnerFields[2]}</HomeFieldLabel>
-                <input className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="Vietnam" />
+                <input value={inquiry.country} onChange={(e) => setInquiry((prev) => ({ ...prev, country: e.target.value }))} className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none" placeholder="Vietnam" />
               </label>
               <label className="block">
                 <HomeFieldLabel>{t.partnerFields[3]}</HomeFieldLabel>
-                <select className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none">
+                <select value={inquiry.type} onChange={(e) => setInquiry((prev) => ({ ...prev, type: e.target.value }))} className="w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm text-[#111] outline-none">
                   <option>Distribution</option>
                   <option>Supply</option>
                   <option>OEM / ODM</option>
@@ -239,12 +265,14 @@ export function HomePage({ locale }: { locale: Locale }) {
               </label>
               <label className="block md:col-span-2">
                 <HomeFieldLabel>{t.partnerFields[4]}</HomeFieldLabel>
-                <textarea className="min-h-36 w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm leading-7 text-[#111] outline-none" placeholder="We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market." />
+                <textarea value={inquiry.detail} onChange={(e) => setInquiry((prev) => ({ ...prev, detail: e.target.value }))} className="min-h-36 w-full rounded-2xl border border-black/8 bg-[#f5f1ea] px-4 py-4 text-sm leading-7 text-[#111] outline-none" placeholder="We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market." />
               </label>
             </div>
             <button type="submit" className="mt-8 inline-flex rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
               {t.partnerCta}
             </button>
+            {inquiryStatus === 'invalid' && <p className="mt-3 text-sm text-[#b42318]">회사명 · 이메일 · 상세내용을 입력해 주세요.</p>}
+            {inquiryStatus === 'done' && <p className="mt-3 text-sm text-[#157347]">문의가 접수된 것으로 가정하고 다음 단계(담당자 연결)로 안내합니다.</p>}
           </form>
 
           <div className="rounded-[1.8rem] bg-[#111] p-8 text-white shadow-[0_14px_34px_rgba(0,0,0,0.08)]">
@@ -252,13 +280,30 @@ export function HomePage({ locale }: { locale: Locale }) {
             <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em]">{t.aiTitle}</h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/72">{t.aiDesc}</p>
             <div className="mt-8 space-y-3">
+              <div className="rounded-xl bg-white px-4 py-3 text-sm text-[#111]">{aiPreview}</div>
               {t.aiExamples.map((item) => (
-                <div key={item} className="rounded-xl bg-white/10 px-4 py-3 text-sm text-white/85">
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => setAiPreview(`Preview response: ${item}`)}
+                  className="block w-full rounded-xl bg-white/10 px-4 py-3 text-left text-sm text-white/85"
+                >
                   {item}
-                </div>
+                </button>
               ))}
             </div>
-            <Link href={`/${locale}/ai`} className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#111]">
+            <form onSubmit={handleAiSubmit} className="mt-5 flex gap-2">
+              <input
+                value={aiPrompt}
+                onChange={(e) => setAiPrompt(e.target.value)}
+                placeholder="Ask in any language..."
+                className="w-full rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white outline-none placeholder:text-white/60"
+              />
+              <button type="submit" className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-[#111]">
+                Send
+              </button>
+            </form>
+            <Link href={`/${locale}/ai`} className="mt-6 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#111]">
               {t.aiCta}
             </Link>
           </div>
