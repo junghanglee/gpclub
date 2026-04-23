@@ -7,27 +7,71 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <SiteShell locale={locale}>
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-16 md:grid-cols-2 md:items-center md:py-24">
-        <div>
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-accentDeep">{t.heroEyebrow}</p>
-          <h1 className="max-w-xl text-4xl font-semibold leading-tight md:text-6xl">{t.heroTitle}</h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-muted">{t.heroDesc}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href={`/${locale}/products`} className="rounded-full bg-accentDeep px-6 py-3 text-sm font-medium text-white shadow-soft">
-              {t.primaryCta}
-            </Link>
-            <Link href={`/${locale}/brand`} className="rounded-full border border-line bg-white px-6 py-3 text-sm font-medium">
-              {t.secondaryCta}
-            </Link>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(201,179,140,0.18),_transparent_36%),radial-gradient(circle_at_bottom_right,_rgba(139,115,85,0.12),_transparent_30%)]" />
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-16 md:grid-cols-[1fr_0.95fr] md:items-center md:py-24">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#dfd2c1] bg-white/70 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-accentDeep backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-accentDeep" />
+              {t.heroEyebrow}
+            </div>
+            <h1 className="mt-7 max-w-2xl text-5xl font-semibold leading-[1.05] md:text-7xl">{t.heroTitle}</h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-muted md:text-xl">{t.heroDesc}</p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href={`/${locale}/products`} className="rounded-full bg-accentDeep px-7 py-3.5 text-sm font-medium text-white shadow-soft transition hover:-translate-y-0.5">
+                {t.primaryCta}
+              </Link>
+              <Link href={`/${locale}/brand`} className="rounded-full border border-line bg-white px-7 py-3.5 text-sm font-medium shadow-sm transition hover:-translate-y-0.5">
+                {t.secondaryCta}
+              </Link>
+            </div>
+
+            <div className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
+              {t.values.map((value) => (
+                <div key={value} className="rounded-2xl border border-white/70 bg-white/80 px-4 py-4 text-sm font-medium text-ink shadow-sm backdrop-blur">
+                  {value}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="relative">
-          <div className="aspect-[4/5] rounded-[2rem] bg-white p-6 shadow-soft">
-            <div className="flex h-full flex-col justify-between rounded-[1.5rem] border border-line bg-gradient-to-b from-[#fcfbf8] to-[#efe8dd] p-8">
-              <div className="text-right text-xs uppercase tracking-[0.3em] text-muted">GPCLUB Signature</div>
-              <div className="mx-auto h-72 w-40 rounded-[2rem] bg-gradient-to-b from-[#d9c2a2] to-[#8b7355] shadow-soft" />
-              <div>
-                <p className="text-sm text-muted">Premium skincare for modern global beauty.</p>
+
+          <div className="relative z-10">
+            <div className="absolute -left-8 top-10 hidden h-32 w-32 rounded-full bg-[#e8dbc8] blur-3xl md:block" />
+            <div className="absolute -right-10 bottom-6 hidden h-36 w-36 rounded-full bg-[#d9c2a2] blur-3xl md:block" />
+
+            <div className="relative rounded-[2.25rem] border border-white/60 bg-white/70 p-6 shadow-soft backdrop-blur">
+              <div className="rounded-[1.8rem] border border-line bg-gradient-to-b from-[#fcfbf8] via-[#f4ede4] to-[#e8dccd] p-7">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.35em] text-muted">GPCLUB Signature</p>
+                    <p className="mt-2 text-sm text-muted">Soft luxury skincare concept</p>
+                  </div>
+                  <div className="rounded-full border border-white/70 bg-white/70 px-3 py-1 text-xs font-medium text-accentDeep">
+                    New Season
+                  </div>
+                </div>
+
+                <div className="mt-10 grid grid-cols-[0.7fr_1.3fr] gap-6">
+                  <div className="flex items-end">
+                    <div className="h-48 w-full rounded-[2rem] bg-gradient-to-b from-[#d5b691] to-[#8b7355] shadow-[0_20px_50px_rgba(91,70,45,0.18)]" />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="rounded-[1.4rem] bg-white/80 p-4 shadow-sm">
+                      <p className="text-xs uppercase tracking-[0.25em] text-muted">Featured</p>
+                      <p className="mt-2 text-lg font-semibold">Premium skincare for modern global beauty</p>
+                    </div>
+                    <div className="rounded-[1.4rem] bg-[#f8f3ec] p-4 shadow-sm">
+                      <p className="text-sm leading-7 text-muted">
+                        Clean formulations, refined visuals, and elegant brand communication designed for both customers and partners.
+                      </p>
+                    </div>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div className="rounded-[1.4rem] border border-white/70 bg-white/70 p-4 text-sm text-muted shadow-sm">Hydrating care</div>
+                      <div className="rounded-[1.4rem] border border-white/70 bg-white/70 p-4 text-sm text-muted shadow-sm">Global-ready branding</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -58,9 +102,9 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {t.featuredItems.map((item, index) => (
-            <article key={item.name} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
+            <article key={item.name} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft transition hover:-translate-y-1">
               <div className="mb-6 flex aspect-[4/4.5] items-center justify-center rounded-[1.5rem] bg-gradient-to-b from-[#faf8f4] to-[#eee4d7]">
-                <div className={`h-40 w-24 rounded-[1.5rem] ${index === 1 ? 'bg-[#d9d9d9]' : index === 2 ? 'bg-[#d7c2b2]' : 'bg-[#d6b894]'}`} />
+                <div className={`h-40 w-24 rounded-[1.5rem] shadow-sm ${index === 1 ? 'bg-[#d9d9d9]' : index === 2 ? 'bg-[#d7c2b2]' : 'bg-[#d6b894]'}`} />
               </div>
               <h3 className="text-xl font-semibold">{item.name}</h3>
               <p className="mt-3 text-sm leading-7 text-muted">{item.desc}</p>
@@ -193,7 +237,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <h2 className="text-3xl font-semibold md:text-4xl">{t.newsTitle}</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[1, 2, 3].map((item) => (
-            <article key={item} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-soft">
+            <article key={item} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-soft transition hover:-translate-y-1">
               <div className="h-56 bg-gradient-to-br from-[#f1ece3] to-[#d8c6af]" />
               <div className="p-6">
                 <p className="text-sm text-muted">2026.04</p>
@@ -214,6 +258,14 @@ export function HomePage({ locale }: { locale: Locale }) {
           </Link>
         </div>
       </section>
+
+      <Link
+        href={`/${locale}/ai`}
+        className="fixed bottom-6 right-6 z-30 inline-flex items-center gap-3 rounded-full bg-accentDeep px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5"
+      >
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">AI</span>
+        Start Consultation
+      </Link>
     </SiteShell>
   );
 }
