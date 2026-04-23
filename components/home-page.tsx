@@ -109,19 +109,30 @@ export function HomePage({ locale }: { locale: Locale }) {
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#8a8a8a]">Best Seller</p>
             <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">지금 가장 인기있는 제품</h2>
           </div>
+          <Link href={`/${locale}/products`} className="hidden rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-[#333] md:inline-flex">
+            View All Portfolio
+          </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            { name: 'PORE ERASER SERUM', desc: '다크모공 클리어, 즉각적인 브라이트닝 솔루션' },
-            { name: 'HYDROGEL MASK', desc: '시그니처 마스크 포트폴리오를 위한 프리미엄 제안' },
-            { name: 'SUN CARE LINE', desc: '시즌성 판매와 유통 제안에 적합한 UV 카테고리' },
+            { name: 'PORE ERASER SERUM', desc: '다크모공 클리어, 즉각적인 브라이트닝 솔루션', tag: 'BEST', meta: 'Brightening · Pore Care' },
+            { name: 'HYDROGEL MASK', desc: '시그니처 마스크 포트폴리오를 위한 프리미엄 제안', tag: 'SIGNATURE', meta: 'Premium Mask · Export Ready' },
+            { name: 'SUN CARE LINE', desc: '시즌성 판매와 유통 제안에 적합한 UV 카테고리', tag: 'SEASONAL', meta: 'UV Care · Retail Campaign' },
           ].map((item, index) => (
             <article key={item.name} className="overflow-hidden rounded-[1.8rem] border border-black/6 bg-white shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
-              <div className={`h-64 ${index === 0 ? 'bg-[#e6ddd1]' : index === 1 ? 'bg-[#ece9e3]' : 'bg-[#dfe9ee]'}`} />
+              <div className={`relative h-64 ${index === 0 ? 'bg-[#e6ddd1]' : index === 1 ? 'bg-[#ece9e3]' : 'bg-[#dfe9ee]'}`}>
+                <span className="absolute left-4 top-4 rounded-full bg-[#111] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">{item.tag}</span>
+              </div>
               <div className="p-6">
                 <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a8a]">Best Item</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[#111]">{item.name}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#666]">{item.desc}</p>
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#8a8a8a]">{item.meta}</p>
+                  <Link href={`/${locale}/products`} className="rounded-full bg-[#111] px-3 py-1.5 text-xs font-semibold text-white">
+                    Details
+                  </Link>
+                </div>
               </div>
             </article>
           ))}
