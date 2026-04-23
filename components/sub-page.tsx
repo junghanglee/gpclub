@@ -254,7 +254,7 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
       )}
 
       {page === 'ai' && (
-        <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[0.95fr_1.05fr]">
+        <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[0.92fr_1.08fr]">
           <div className="rounded-[2rem] bg-[#efe7db] p-8 shadow-soft md:p-10">
             <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Capabilities</p>
             <ul className="space-y-4 text-sm leading-7 text-muted">
@@ -264,6 +264,15 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8 rounded-[1.5rem] border border-white/70 bg-white/70 p-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted">Routing</p>
+              <div className="space-y-3 text-sm text-muted">
+                <div className="rounded-xl bg-sand px-4 py-3">Product guidance → suitable line recommendation</div>
+                <div className="rounded-xl bg-sand px-4 py-3">Business inquiry → partnership / supply form handoff</div>
+                <div className="rounded-xl bg-sand px-4 py-3">Language support → multilingual response flow</div>
+              </div>
+            </div>
           </div>
 
           <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
@@ -272,27 +281,57 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accentDeep text-sm font-semibold text-white">AI</div>
                 <div>
                   <p className="font-medium">GPCLUB Beauty Advisor</p>
-                  <p className="text-sm text-muted">Preview conversation</p>
+                  <p className="text-sm text-muted">Interactive consultation preview</p>
                 </div>
               </div>
-              <div className="h-3 w-3 rounded-full bg-green-500" />
+              <div className="flex items-center gap-2 text-xs text-muted">
+                <span className="h-2.5 w-2.5 rounded-full bg-green-500" />
+                Online
+              </div>
             </div>
+
             <div className="space-y-4 py-6">
               <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-sand px-4 py-3 text-sm leading-7 text-ink">
                 {t.aiDesc}
               </div>
-              {t.aiExamples.map((item, idx) => (
-                <div key={item} className={idx === 1 ? 'ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-accentDeep px-4 py-3 text-sm leading-7 text-white' : 'max-w-[88%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-sm leading-7 text-muted border border-line'}>
-                  {item}
-                </div>
-              ))}
+              <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-accentDeep px-4 py-3 text-sm leading-7 text-white">
+                {t.aiExamples[0]}
+              </div>
+              <div className="max-w-[88%] rounded-2xl rounded-tl-md border border-line bg-white px-4 py-3 text-sm leading-7 text-muted">
+                Based on your needs, I can guide you to mask, calming, brightening, or sun care lines and connect you to the partnership team if needed.
+              </div>
+              <div className="ml-auto max-w-[76%] rounded-2xl rounded-tr-md bg-[#f6f1e8] px-4 py-3 text-sm leading-7 text-ink">
+                {t.aiExamples[1]}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              {t.aiExamples.map((item) => (
-                <button key={item} type="button" className="rounded-full border border-line bg-sand px-4 py-2 text-sm text-muted">
-                  {item}
-                </button>
-              ))}
+
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted">Suggested prompts</p>
+              <div className="flex flex-wrap gap-3">
+                {t.aiExamples.map((item) => (
+                  <button key={item} type="button" className="rounded-full border border-line bg-sand px-4 py-2 text-sm text-muted transition hover:border-accent hover:text-ink">
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <form className="mt-6 flex items-center gap-3 rounded-[1.4rem] border border-line bg-sand px-4 py-3">
+              <input
+                type="text"
+                placeholder="Type your question here..."
+                className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted"
+              />
+              <button type="submit" className="rounded-full bg-accentDeep px-4 py-2 text-sm font-semibold text-white">
+                Send
+              </button>
+            </form>
+
+            <div className="mt-5 flex flex-wrap items-center gap-4">
+              <Link href={`/${locale}/contact`} className="inline-flex rounded-full border border-line bg-white px-5 py-3 text-sm font-medium text-ink">
+                Connect to team
+              </Link>
+              <p className="text-sm text-muted">If the inquiry is business-related, the AI can route it to GPCLUB’s partnership flow.</p>
             </div>
           </div>
         </section>
