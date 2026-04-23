@@ -85,25 +85,48 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+          <div className="absolute right-6 top-6 rounded-full border border-[#d9c7ad] bg-[#f8f2ea] px-3 py-1 text-xs font-medium text-accentDeep">
+            B2B Inquiry Form
+          </div>
           <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Partnership</p>
           <h2 className="text-3xl font-semibold md:text-4xl">{t.partnerTitle}</h2>
           <p className="mt-4 max-w-2xl text-base leading-8 text-muted">{t.partnerDesc}</p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {t.partnerFields.map((field, index) => (
-              <div
-                key={field}
-                className={`rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted ${
-                  index === t.partnerFields.length - 1 ? 'md:col-span-2 min-h-28' : ''
-                }`}
-              >
-                {field}
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[0]}</span>
+              <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">GPCLUB Vietnam Distribution Co.</div>
+            </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[1]}</span>
+              <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">partner@gpclub.vn</div>
+            </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[2]}</span>
+              <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">Vietnam</div>
+            </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[3]}</span>
+              <div className="flex items-center justify-between rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted shadow-sm">
+                <span>Distribution / Supply</span>
+                <span>▾</span>
               </div>
-            ))}
+            </label>
+            <label className="block md:col-span-2">
+              <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[4]}</span>
+              <div className="min-h-36 rounded-2xl border border-line bg-sand px-4 py-4 text-sm leading-7 text-muted shadow-sm">
+                We are interested in discussing distribution opportunities, minimum order quantities, and lead times for the Vietnam market.
+              </div>
+            </label>
           </div>
-          <Link href={`/${locale}/partnership`} className="mt-8 inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white">
-            {t.partnerCta}
-          </Link>
+
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <Link href={`/${locale}/partnership`} className="inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white">
+              {t.partnerCta}
+            </Link>
+            <p className="text-sm text-muted">Business partnership · distribution · supply request</p>
+          </div>
         </div>
 
         <div className="relative overflow-hidden rounded-[2rem] bg-[#efe7db] p-8 shadow-soft md:p-10">
