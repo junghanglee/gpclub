@@ -407,25 +407,51 @@ export function HomePage({ locale }: { locale: Locale }) {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Updates</p>
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">Business-ready content blocks for launch</h2>
+            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Best Seller</p>
+            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">지금 가장 주목해야 할 핵심 제품</h2>
           </div>
           <p className="max-w-xl text-sm leading-7 text-[#666]">
-            Replacing temporary launch cards with structured update modules inspired by modern beauty brand editorial layouts.
+            베트남 및 다국적 바이어 기준으로 즉시 제안하기 좋은 핵심 라인을 중심으로 노출합니다.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            'Portfolio updates for Vietnam distribution',
-            'Buyer-ready category recommendations',
-            'Partnership and inquiry process guidance',
-          ].map((title, idx) => (
-            <article key={title} className="overflow-hidden rounded-[2rem] border border-black/6 bg-white shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
-              <div className={`h-56 ${idx === 0 ? 'bg-[#e9dfd2]' : idx === 1 ? 'bg-[#ecebe8]' : 'bg-[#ded7cd]'}`} />
+            { title: 'PORE / BRIGHTENING SERUM', desc: '브라이트닝 및 결 정돈 중심의 세럼 제안', tone: 'bg-[#e9dfd2]' },
+            { title: 'HYDROGEL MASK', desc: '프리미엄 마스크 카테고리용 시그니처 제안', tone: 'bg-[#ecebe8]' },
+            { title: 'SUN CARE LINE', desc: '시즌 캠페인과 리테일 전개에 적합한 선케어 라인', tone: 'bg-[#ded7cd]' },
+          ].map((item) => (
+            <article key={item.title} className="overflow-hidden rounded-[2rem] border border-black/6 bg-white shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+              <div className={`h-56 ${item.tone}`} />
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#8a8a8a]">Editorial Block</p>
-                <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-[#111]">{title}</h3>
+                <p className="text-xs uppercase tracking-[0.22em] text-[#8a8a8a]">Best Item</p>
+                <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-[#111]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#666]">{item.desc}</p>
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-20">
+        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">Review / Trust</p>
+            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[#111] md:text-5xl">구매자와 파트너가 신뢰할 수 있는 제안 구조</h2>
+          </div>
+          <p className="max-w-xl text-sm leading-7 text-[#666]">
+            제품 자체보다도, 어떤 시장과 어떤 파트너에게 맞는지를 쉽게 이해할 수 있도록 정리합니다.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            '베트남 유통 파트너 대상 라인 추천',
+            '다국적 바이어 대상 카테고리 제안',
+            'AI 상담과 문의 폼으로 바로 연결되는 구조',
+          ].map((title) => (
+            <article key={title} className="rounded-[2rem] border border-black/6 bg-white p-6 shadow-[0_14px_34px_rgba(0,0,0,0.04)]">
+              <p className="text-xs uppercase tracking-[0.22em] text-[#8a8a8a]">Trust Point</p>
+              <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-[#111]">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#666]">GPCLUB은 제품 소개를 넘어 실제 공급/유통 대화를 시작하기 쉬운 구조를 제공합니다.</p>
             </article>
           ))}
         </div>
