@@ -1,9 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { Locale, siteContent } from '@/data/site';
 import { SiteShell } from '@/components/site-shell';
+
+function HomeFieldLabel({ children }: { children: ReactNode }) {
+  return <span className="mb-2 block text-sm font-medium text-[#151515]">{children}</span>;
+}
 
 export function HomePage({ locale }: { locale: Locale }) {
   const t = siteContent[locale];
@@ -82,6 +86,20 @@ export function HomePage({ locale }: { locale: Locale }) {
               {String(activeSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
             </span>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-8">
+        <div className="grid gap-3 rounded-[1.4rem] border border-black/6 bg-white p-4 md:grid-cols-4">
+          {['Mask Packs', 'Ampoule / Serum', 'Sun Care', 'B2B Set Offers'].map((item) => (
+            <button
+              key={item}
+              type="button"
+              className="rounded-xl bg-[#f5f2ec] px-4 py-3 text-left text-sm font-medium text-[#333] transition hover:bg-[#ece7de]"
+            >
+              {item}
+            </button>
+          ))}
         </div>
       </section>
 
