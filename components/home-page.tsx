@@ -150,6 +150,18 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-6 py-12">
+        <div className="rounded-[1.8rem] border border-black/6 bg-[linear-gradient(90deg,#111_0%,#2b2b2b_52%,#3a3a3a_100%)] px-7 py-8 text-white md:px-10">
+          <p className="text-xs uppercase tracking-[0.2em] text-white/70">ONE SHOT ONE SOLUTION</p>
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <h3 className="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">with GPCLUB · Buyer-first B2B curation</h3>
+            <Link href={`/${locale}/products`} className="inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#111]">
+              Explore Best Line
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
@@ -157,6 +169,21 @@ export function HomePage({ locale }: { locale: Locale }) {
             <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[#111]">고민이 될 땐 신뢰할 수 있는 제안</h2>
           </div>
         </div>
+
+        <div className="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            { id: 'sihaa_', text: '아이크림 포 페이스 N개 사용중이에요. 흡수 빠르고 유통 제안하기 좋은 반응형 라인.' },
+            { id: 'beauty_yet', text: '얼굴 전체에 바르는 #국민아이크림. 보습/탄력 포인트가 명확해서 설명이 쉬웠어요.' },
+            { id: 'hella_cos', text: '괜히 유명한 게 아닌 라인. 카테고리 스토리가 명확해서 바이어 대응이 좋았습니다.' },
+            { id: 'onevelycos', text: '빠른 흡수감과 데일리 사용감이 강점. 시즌 제안용으로도 깔끔했습니다.' },
+          ].map((item) => (
+            <article key={item.id} className="rounded-[1.2rem] border border-black/6 bg-white p-5 shadow-[0_10px_22px_rgba(0,0,0,0.04)]">
+              <p className="text-xs uppercase tracking-[0.16em] text-[#8a8a8a]">@{item.id}</p>
+              <p className="mt-3 text-sm leading-7 text-[#444]">{item.text}</p>
+            </article>
+          ))}
+        </div>
+
         <div className="grid gap-6 md:grid-cols-3">
           {[
             '베트남 유통 파트너 대상 제품 제안',
