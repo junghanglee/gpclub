@@ -3,12 +3,12 @@ import { Locale, PageKey, siteContent } from '@/data/site';
 import { SiteShell } from '@/components/site-shell';
 
 const pageStyles: Record<PageKey, { eyebrow: string; accent: string }> = {
-  brand: { eyebrow: 'Brand', accent: 'from-[#f7f1e6] to-[#eadcc8]' },
-  products: { eyebrow: 'Products', accent: 'from-[#f9f6f0] to-[#e7dbca]' },
-  rd: { eyebrow: 'R&D', accent: 'from-[#f6f2ea] to-[#ddd4c7]' },
-  partnership: { eyebrow: 'Partnership', accent: 'from-[#f7efe2] to-[#e3cfb6]' },
-  ai: { eyebrow: 'AI Agent', accent: 'from-[#efe8dd] to-[#d9c3a5]' },
-  contact: { eyebrow: 'Contact', accent: 'from-[#f8f3ec] to-[#e1d4c6]' },
+  brand: { eyebrow: 'Brand', accent: 'from-[#f1e7d9] via-[#f8f3eb] to-[#e2cfb6]' },
+  products: { eyebrow: 'Products', accent: 'from-[#eee4d5] via-[#f8f2e8] to-[#dcc4a6]' },
+  rd: { eyebrow: 'R&D', accent: 'from-[#eee8de] via-[#f6f2eb] to-[#d9ccb9]' },
+  partnership: { eyebrow: 'Partnership', accent: 'from-[#f3e8d8] via-[#f9f2e6] to-[#e4cfb0]' },
+  ai: { eyebrow: 'AI Agent', accent: 'from-[#e9e0d3] via-[#f3ece2] to-[#d8c0a2]' },
+  contact: { eyebrow: 'Contact', accent: 'from-[#f1e8db] via-[#f8f3eb] to-[#e2d1be]' },
 };
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
@@ -42,19 +42,24 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
 
   return (
     <SiteShell locale={locale}>
-      <section className="relative overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${style.accent} opacity-60`} />
-        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 md:py-20">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-accentDeep">{style.eyebrow}</p>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-6xl">{content.title}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{content.desc}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href={content.cta.href} className="rounded-full bg-accentDeep px-6 py-3 text-sm font-medium text-white shadow-soft">
+      <section className="relative overflow-hidden border-b border-black/5">
+        <div className={`absolute inset-0 bg-gradient-to-br ${style.accent}`} />
+        <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-14 md:pb-16 md:pt-16">
+          <p className="mb-4 text-xs uppercase tracking-[0.28em] text-[#7d6a4a]">{style.eyebrow}</p>
+          <h1 className="max-w-4xl text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-[#111] md:text-6xl">{content.title}</h1>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-[#5f5f5f] md:text-lg">{content.desc}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href={content.cta.href} className="rounded-full bg-[#111] px-6 py-3 text-sm font-semibold text-white">
               {content.cta.label}
             </Link>
-            <Link href={`/${locale}`} className="rounded-full border border-line bg-white px-6 py-3 text-sm font-medium">
+            <Link href={`/${locale}`} className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#222]">
               GPCLUB Home
             </Link>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2 text-xs uppercase tracking-[0.14em] text-[#6f6f6f]">
+            <span className="rounded-full bg-white/70 px-3 py-1.5">Korean HQ Portfolio</span>
+            <span className="rounded-full bg-white/70 px-3 py-1.5">Vietnam B2B</span>
+            <span className="rounded-full bg-white/70 px-3 py-1.5">Multi-national Buyers</span>
           </div>
         </div>
       </section>
@@ -123,19 +128,28 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
           <section className="mx-auto max-w-6xl px-6 py-10">
             <div className="grid gap-6 md:grid-cols-3">
               {t.featuredItems.map((item, index) => (
-                <article key={item.name} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
-                  <div className="mb-6 flex aspect-[4/4.5] items-center justify-center rounded-[1.5rem] bg-gradient-to-b from-[#faf8f4] to-[#eee4d7]">
-                    <div className={`h-44 w-24 rounded-[1.5rem] shadow-sm ${index === 1 ? 'bg-[#d9d9d9]' : index === 2 ? 'bg-[#d7c2b2]' : 'bg-[#d6b894]'}`} />
+                <article key={item.name} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-soft">
+                  <div className="relative">
+                    <img
+                      src={index === 0 ? '/images/samples/hero-pore-serum.svg' : index === 1 ? '/images/samples/hero-hydrogel-mask.svg' : '/images/samples/hero-sun-care.svg'}
+                      alt={item.name}
+                      className="h-56 w-full object-cover"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-[#111] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+                      {index === 0 ? 'BEST' : index === 1 ? 'SIGNATURE' : 'SEASONAL'}
+                    </span>
                   </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-xl font-semibold">{item.name}</h3>
-                    <span className="rounded-full bg-sand px-3 py-1 text-xs text-muted">Core Line</span>
-                  </div>
-                  <p className="mt-3 text-sm leading-7 text-muted">{item.desc}</p>
-                  <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted">
-                    <span className="rounded-full bg-sand px-3 py-1">B2B Ready</span>
-                    <span className="rounded-full bg-sand px-3 py-1">Korean Portfolio</span>
-                    <span className="rounded-full bg-sand px-3 py-1">Vietnam Market</span>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="text-xl font-semibold">{item.name}</h3>
+                      <span className="rounded-full bg-sand px-3 py-1 text-xs text-muted">Core Line</span>
+                    </div>
+                    <p className="mt-3 text-sm leading-7 text-muted">{item.desc}</p>
+                    <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted">
+                      <span className="rounded-full bg-sand px-3 py-1">B2B Ready</span>
+                      <span className="rounded-full bg-sand px-3 py-1">Korean Portfolio</span>
+                      <span className="rounded-full bg-sand px-3 py-1">Vietnam Market</span>
+                    </div>
                   </div>
                 </article>
               ))}
