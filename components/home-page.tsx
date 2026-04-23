@@ -41,13 +41,36 @@ export function HomePage({ locale }: { locale: Locale }) {
                   </Link>
                 </div>
 
-                <div className="mt-10 flex flex-wrap gap-3">
-                  {['Mask Portfolio', 'Ampoule Care', 'Sun Care', 'B2B Supply'].map((item) => (
-                    <span key={item} className="rounded-full bg-[#111] px-4 py-2 text-sm font-medium text-white">
-                      {item}
-                    </span>
+                <div className="mt-10 flex items-center gap-3">
+                  <span className="h-2.5 w-8 rounded-full bg-[#111]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-black/20" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-black/20" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-black/20" />
+                  <span className="ml-3 text-xs uppercase tracking-[0.24em] text-[#8a8a8a]">01 / 04</span>
+                </div>
+
+                <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
+                  {[
+                    { title: 'Niacinamide Line', state: 'active' },
+                    { title: 'Hydrogel Mask', state: 'default' },
+                    { title: 'Sun Care', state: 'default' },
+                  ].map((item) => (
+                    <div
+                      key={item.title}
+                      className={`rounded-[1.4rem] border px-4 py-4 text-sm shadow-sm ${
+                        item.state === 'active'
+                          ? 'border-black/10 bg-white text-[#111]'
+                          : 'border-black/6 bg-white/55 text-[#666]'
+                      }`}
+                    >
+                      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8a8a8a]">Campaign</p>
+                      <p className="mt-2 font-medium">{item.title}</p>
+                    </div>
                   ))}
                 </div>
+              </div>
+
+              <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[500px]">
               </div>
 
               <div className="relative flex min-h-[420px] items-end justify-center md:min-h-[500px]">
