@@ -46,26 +46,38 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
       </section>
 
       {page === 'brand' && (
-        <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1fr_1fr]">
-          <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
-            <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Brand Positioning</p>
-            <div className="space-y-4 text-sm leading-7 text-muted">
-              <div className="rounded-2xl bg-sand px-5 py-4">Vietnam-based B2B gateway for a Korean headquarters-aligned portfolio</div>
-              <div className="rounded-2xl bg-sand px-5 py-4">Focused on distributors, wholesalers, and multinational buyers</div>
-              <div className="rounded-2xl bg-sand px-5 py-4">Built around the same product direction as the Korean headquarters</div>
+        <>
+          <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1fr_1fr]">
+            <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Brand Positioning</p>
+              <div className="space-y-4 text-sm leading-7 text-muted">
+                <div className="rounded-2xl bg-sand px-5 py-4">Vietnam-based B2B gateway for a Korean headquarters-aligned portfolio</div>
+                <div className="rounded-2xl bg-sand px-5 py-4">Focused on distributors, wholesalers, and multinational buyers</div>
+                <div className="rounded-2xl bg-sand px-5 py-4">Built around the same product direction as the Korean headquarters</div>
+              </div>
             </div>
-          </div>
-          <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
-            <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Core Categories</p>
-            <ul className="space-y-3 text-sm leading-7 text-muted">
-              {t.featuredItems.map((item) => (
-                <li key={item.name} className="rounded-xl bg-sand px-4 py-3">
-                  {item.name}
-                </li>
+            <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Core Categories</p>
+              <ul className="space-y-3 text-sm leading-7 text-muted">
+                {t.featuredItems.map((item) => (
+                  <li key={item.name} className="rounded-xl bg-sand px-4 py-3">
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 pb-20">
+            <div className="grid gap-6 md:grid-cols-3">
+              {['Korean headquarters portfolio alignment', 'Vietnam market B2B execution', 'Support for multinational buyers'].map((item) => (
+                <div key={item} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
+                  <p className="text-sm leading-7 text-muted">{item}</p>
+                </div>
               ))}
-            </ul>
-          </div>
-        </section>
+            </div>
+          </section>
+        </>
       )}
 
       {page === 'products' && (
@@ -121,14 +133,7 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
               <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
                 <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Problem-solving Categories</p>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {[
-                    'Hydration & Glow',
-                    'Brightening Care',
-                    'Calming Care',
-                    'Sun Protection',
-                    'Ampoule Focus',
-                    'Mask Pack Portfolio',
-                  ].map((item) => (
+                  {['Hydration & Glow', 'Brightening Care', 'Calming Care', 'Sun Protection', 'Ampoule Focus', 'Mask Pack Portfolio'].map((item) => (
                     <div key={item} className="rounded-2xl bg-sand px-4 py-4 text-sm text-muted">
                       {item}
                     </div>
@@ -150,21 +155,34 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
       )}
 
       {page === 'rd' && (
-        <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1fr_1fr]">
-          <div className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
-            <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Portfolio Direction</p>
-            <ul className="space-y-3 text-sm leading-7 text-muted">
-              {t.rdItems.map((item) => (
-                <li key={item} className="rounded-xl bg-sand px-4 py-3">
-                  {item}
-                </li>
+        <>
+          <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1fr_1fr]">
+            <div className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Portfolio Direction</p>
+              <ul className="space-y-3 text-sm leading-7 text-muted">
+                {t.rdItems.map((item) => (
+                  <li key={item} className="rounded-xl bg-sand px-4 py-3">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Supply Logic</p>
+              <p className="text-sm leading-8 text-muted">GPCLUB positions the Korean headquarters-aligned product portfolio for business use in Vietnam, with an emphasis on market-fit categories, partner communication, and scalable supply discussions.</p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 pb-20">
+            <div className="grid gap-6 md:grid-cols-3">
+              {['Category-led portfolio strategy', 'Business-oriented portfolio communication', 'Vietnam market-ready supply discussion'].map((item) => (
+                <div key={item} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
+                  <p className="text-sm leading-7 text-muted">{item}</p>
+                </div>
               ))}
-            </ul>
-          </div>
-          <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
-            <p className="text-sm leading-8 text-muted">GPCLUB positions the Korean headquarters-aligned product portfolio for business use in Vietnam, with an emphasis on market-fit categories, partner communication, and scalable supply discussions.</p>
-          </div>
-        </section>
+            </div>
+          </section>
+        </>
       )}
 
       {page === 'partnership' && (
@@ -261,20 +279,33 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
       )}
 
       {page === 'contact' && (
-        <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1fr_1fr]">
-          <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
-            <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Contact Channels</p>
-            <div className="space-y-4 text-sm leading-7 text-muted">
-              <div className="rounded-2xl bg-sand px-5 py-4">Product inquiry</div>
-              <div className="rounded-2xl bg-sand px-5 py-4">Distribution partnership</div>
-              <div className="rounded-2xl bg-sand px-5 py-4">Supply discussion</div>
-              <div className="rounded-2xl bg-sand px-5 py-4">Multi-national buyer support</div>
+        <>
+          <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1fr_1fr]">
+            <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Contact Channels</p>
+              <div className="space-y-4 text-sm leading-7 text-muted">
+                <div className="rounded-2xl bg-sand px-5 py-4">Product inquiry</div>
+                <div className="rounded-2xl bg-sand px-5 py-4">Distribution partnership</div>
+                <div className="rounded-2xl bg-sand px-5 py-4">Supply discussion</div>
+                <div className="rounded-2xl bg-sand px-5 py-4">Multi-national buyer support</div>
+              </div>
             </div>
-          </div>
-          <div className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
-            <p className="text-sm leading-8 text-muted">GPCLUB is positioned to handle product communication, business matching, and partnership conversations for buyers seeking the same product direction as the Korean headquarters in a Vietnam-based B2B setting.</p>
-          </div>
-        </section>
+            <div className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Business Contact Logic</p>
+              <p className="text-sm leading-8 text-muted">GPCLUB is positioned to handle product communication, business matching, and partnership conversations for buyers seeking the same product direction as the Korean headquarters in a Vietnam-based B2B setting.</p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 pb-20">
+            <div className="grid gap-6 md:grid-cols-3">
+              {['General inquiry', 'Distribution / wholesale', 'Supply and multi-national buyer communication'].map((item) => (
+                <div key={item} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
+                  <p className="text-sm leading-7 text-muted">{item}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
       )}
     </SiteShell>
   );
