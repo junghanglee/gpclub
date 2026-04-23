@@ -11,6 +11,20 @@ const pageStyles: Record<PageKey, { eyebrow: string; accent: string }> = {
   contact: { eyebrow: 'Contact', accent: 'from-[#f8f3ec] to-[#e1d4c6]' },
 };
 
+function FieldLabel({ children }: { children: React.ReactNode }) {
+  return <span className="mb-2 block text-sm font-medium text-ink">{children}</span>;
+}
+
+function TextInput({ placeholder, type = 'text' }: { placeholder: string; type?: string }) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      className="w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-ink outline-none transition placeholder:text-muted focus:border-accent"
+    />
+  );
+}
+
 export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
   const t = siteContent[locale];
   const style = pageStyles[page];
@@ -187,39 +201,45 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
 
       {page === 'partnership' && (
         <section className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+          <form className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
             <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Inquiry Form</p>
             <div className="grid gap-5 md:grid-cols-2">
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[0]}</span>
-                <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted">GPCLUB Global Partner</div>
+                <FieldLabel>{t.partnerFields[0]}</FieldLabel>
+                <TextInput placeholder="GPCLUB Global Partner" />
               </label>
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[1]}</span>
-                <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted">hello@partner.com</div>
+                <FieldLabel>{t.partnerFields[1]}</FieldLabel>
+                <TextInput type="email" placeholder="hello@partner.com" />
               </label>
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[2]}</span>
-                <div className="rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted">Vietnam</div>
+                <FieldLabel>{t.partnerFields[2]}</FieldLabel>
+                <TextInput placeholder="Vietnam" />
               </label>
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[3]}</span>
-                <div className="flex items-center justify-between rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-muted">
-                  <span>Distribution / OEM / Supply</span>
-                  <span>▾</span>
-                </div>
+                <FieldLabel>{t.partnerFields[3]}</FieldLabel>
+                <select className="w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm text-ink outline-none transition focus:border-accent">
+                  <option>Distribution</option>
+                  <option>Supply</option>
+                  <option>OEM / ODM</option>
+                  <option>Wholesale</option>
+                </select>
               </label>
               <label className="block md:col-span-2">
-                <span className="mb-2 block text-sm font-medium text-ink">{t.partnerFields[4]}</span>
-                <div className="min-h-40 rounded-2xl border border-line bg-sand px-4 py-4 text-sm leading-7 text-muted">
-                  Please share your company profile, expected order quantity, and target market so GPCLUB can review your request.
-                </div>
+                <FieldLabel>{t.partnerFields[4]}</FieldLabel>
+                <textarea
+                  placeholder="Please share your company profile, expected order quantity, and target market so GPCLUB can review your request."
+                  className="min-h-40 w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm leading-7 text-ink outline-none transition placeholder:text-muted focus:border-accent"
+                />
               </label>
             </div>
-            <Link href={`/${locale}/contact`} className="mt-8 inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white">
-              {t.partnerCta}
-            </Link>
-          </div>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <button type="submit" className="inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white shadow-soft">
+                {t.partnerCta}
+              </button>
+              <p className="text-sm text-muted">Business partnership · distribution · supply request</p>
+            </div>
+          </form>
 
           <div className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
             <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Business Scope</p>
@@ -290,10 +310,29 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
                 <div className="rounded-2xl bg-sand px-5 py-4">Multi-national buyer support</div>
               </div>
             </div>
-            <div className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
-              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Business Contact Logic</p>
-              <p className="text-sm leading-8 text-muted">GPCLUB is positioned to handle product communication, business matching, and partnership conversations for buyers seeking the same product direction as the Korean headquarters in a Vietnam-based B2B setting.</p>
-            </div>
+            <form className="rounded-[2rem] bg-white p-8 shadow-soft md:p-10">
+              <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Send Inquiry</p>
+              <div className="space-y-5">
+                <label className="block">
+                  <FieldLabel>Name / Company</FieldLabel>
+                  <TextInput placeholder="GPCLUB Partner" />
+                </label>
+                <label className="block">
+                  <FieldLabel>Email</FieldLabel>
+                  <TextInput type="email" placeholder="contact@example.com" />
+                </label>
+                <label className="block">
+                  <FieldLabel>Inquiry</FieldLabel>
+                  <textarea
+                    placeholder="Tell us what you need help with."
+                    className="min-h-36 w-full rounded-2xl border border-line bg-sand px-4 py-4 text-sm leading-7 text-ink outline-none transition placeholder:text-muted focus:border-accent"
+                  />
+                </label>
+                <button type="submit" className="inline-flex rounded-full bg-accentDeep px-6 py-3 text-sm font-semibold text-white shadow-soft">
+                  {t.contactCta}
+                </button>
+              </div>
+            </form>
           </section>
 
           <section className="mx-auto max-w-6xl px-6 pb-20">
