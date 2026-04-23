@@ -1,0 +1,20 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 760'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#e3eef4'/>
+      <stop offset='55%' stop-color='#f5fbff'/>
+      <stop offset='100%' stop-color='#cce0ea'/>
+    </linearGradient>
+    <linearGradient id='tube' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0%' stop-color='#ffffff'/>
+      <stop offset='100%' stop-color='#d7e2e9'/>
+    </linearGradient>
+  </defs>
+  <rect width='1200' height='760' fill='url(#bg)'/>
+  <circle cx='970' cy='170' r='88' fill='#ffffff' opacity='0.55'/>
+  <rect x='700' y='340' width='72' height='220' rx='34' fill='url(#tube)'/>
+  <rect x='790' y='310' width='72' height='250' rx='34' fill='url(#tube)'/>
+  <rect x='880' y='280' width='74' height='280' rx='34' fill='url(#tube)'/>
+  <rect x='974' y='320' width='72' height='240' rx='34' fill='url(#tube)'/>
+  <ellipse cx='890' cy='652' rx='240' ry='34' fill='#ffffff88'/>
+</svg>
