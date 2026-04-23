@@ -69,24 +69,84 @@ export function SubPage({ locale, page }: { locale: Locale; page: PageKey }) {
       )}
 
       {page === 'products' && (
-        <section className="mx-auto max-w-6xl px-6 py-20">
-          <div className="grid gap-6 md:grid-cols-3">
-            {t.featuredItems.map((item, index) => (
-              <article key={item.name} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
-                <div className="mb-6 flex aspect-[4/4.5] items-center justify-center rounded-[1.5rem] bg-gradient-to-b from-[#faf8f4] to-[#eee4d7]">
-                  <div className={`h-44 w-24 rounded-[1.5rem] shadow-sm ${index === 1 ? 'bg-[#d9d9d9]' : index === 2 ? 'bg-[#d7c2b2]' : 'bg-[#d6b894]'}`} />
+        <>
+          <section className="mx-auto max-w-6xl px-6 pt-20">
+            <div className="grid gap-4 md:grid-cols-4">
+              {['Mask', 'Ampoule', 'Calming', 'Sun Care'].map((item) => (
+                <div key={item} className="rounded-2xl border border-line bg-white px-5 py-5 text-sm font-medium shadow-soft">
+                  {item}
                 </div>
-                <h3 className="text-xl font-semibold">{item.name}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">{item.desc}</p>
-                <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted">
-                  <span className="rounded-full bg-sand px-3 py-1">B2B Ready</span>
-                  <span className="rounded-full bg-sand px-3 py-1">Korean Portfolio</span>
-                  <span className="rounded-full bg-sand px-3 py-1">Vietnam Market</span>
+              ))}
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 py-10">
+            <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Portfolio Direction</p>
+                  <h2 className="text-3xl font-semibold">Korean headquarters-aligned portfolio for Vietnam B2B</h2>
                 </div>
-              </article>
-            ))}
-          </div>
-        </section>
+                <p className="max-w-xl text-sm leading-7 text-muted">
+                  GPCLUB structures the product lineup for distributors and multinational buyers by category, use case, and business readiness.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 py-10">
+            <div className="grid gap-6 md:grid-cols-3">
+              {t.featuredItems.map((item, index) => (
+                <article key={item.name} className="rounded-[2rem] border border-line bg-white p-6 shadow-soft">
+                  <div className="mb-6 flex aspect-[4/4.5] items-center justify-center rounded-[1.5rem] bg-gradient-to-b from-[#faf8f4] to-[#eee4d7]">
+                    <div className={`h-44 w-24 rounded-[1.5rem] shadow-sm ${index === 1 ? 'bg-[#d9d9d9]' : index === 2 ? 'bg-[#d7c2b2]' : 'bg-[#d6b894]'}`} />
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-xl font-semibold">{item.name}</h3>
+                    <span className="rounded-full bg-sand px-3 py-1 text-xs text-muted">Core Line</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.desc}</p>
+                  <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted">
+                    <span className="rounded-full bg-sand px-3 py-1">B2B Ready</span>
+                    <span className="rounded-full bg-sand px-3 py-1">Korean Portfolio</span>
+                    <span className="rounded-full bg-sand px-3 py-1">Vietnam Market</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 py-10">
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+                <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">Problem-solving Categories</p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    'Hydration & Glow',
+                    'Brightening Care',
+                    'Calming Care',
+                    'Sun Protection',
+                    'Ampoule Focus',
+                    'Mask Pack Portfolio',
+                  ].map((item) => (
+                    <div key={item} className="rounded-2xl bg-sand px-4 py-4 text-sm text-muted">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] border border-line bg-white p-8 shadow-soft md:p-10">
+                <p className="mb-3 text-sm uppercase tracking-[0.25em] text-accentDeep">B2B Fit</p>
+                <div className="space-y-4 text-sm leading-7 text-muted">
+                  <div className="rounded-2xl bg-sand px-5 py-4">Suitable for distributors seeking Korean product lines in Vietnam</div>
+                  <div className="rounded-2xl bg-sand px-5 py-4">Structured for multi-national buyer communication</div>
+                  <div className="rounded-2xl bg-sand px-5 py-4">Ready for supply discussion, market selection, and category expansion</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {page === 'rd' && (
