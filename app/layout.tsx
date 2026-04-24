@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'GPCLUB',
-  description: 'Premium clean beauty brand homepage',
+  description: 'Premium K-Beauty B2B portfolio for Vietnam distribution and multinational buyers',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
