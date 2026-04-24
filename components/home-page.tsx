@@ -41,7 +41,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   });
   const [inquiryStatus, setInquiryStatus] = useState<'idle' | 'invalid' | 'done'>('idle');
   const [aiPrompt, setAiPrompt] = useState('');
-  const [aiPreview, setAiPreview] = useState(t.aiExamples[0]);
+  const [aiPreview, setAiPreview] = useState<string>(t.aiExamples[0]);
   const slide = heroSlides[activeSlide];
 
   const handleInquirySubmit = (e: FormEvent) => {
