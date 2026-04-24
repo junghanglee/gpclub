@@ -173,7 +173,7 @@ export const siteContent = {
         { label: 'Contact', title: 'Direct business contact', desc: 'The contact page stays concise, direct, and commercially useful.' },
         { label: 'Use', title: 'Product / sourcing / partnership', desc: 'Used for product review, sourcing discussion, partnership, or buyer communication.' },
         { label: 'Flow', title: 'Extension of the portfolio', desc: 'The contact page should feel like the next step of the portfolio, not a generic final screen.' },
-      },
+      ],
     },
   },
   ko: {
