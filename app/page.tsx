@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
-export default function Page() {
-  redirect('/vi');
+export default function RootPage() {
+  redirect('/ko');
 }
