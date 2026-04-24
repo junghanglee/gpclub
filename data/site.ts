@@ -91,7 +91,7 @@ export const siteContent = {
         { label: 'Contact', title: 'Direct business contact', desc: 'Trang contact được giữ ngắn, direct, và commercially useful.' },
         { label: 'Use', title: 'Product / sourcing / partnership', desc: 'Dùng cho product review, sourcing discussion, partnership, hoặc buyer contact.' },
         { label: 'Flow', title: 'Extension of the portfolio', desc: 'Contact page là phần nối tiếp của portfolio, không phải generic final page.' },
-      },
+      ],
     },
   },
   en: {
